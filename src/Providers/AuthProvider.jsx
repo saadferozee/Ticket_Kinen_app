@@ -3,10 +3,12 @@ import { RouterContextProvider } from 'react-router';
 import AuthContext from '../Contexts/AuthContext';
 import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../Firebase/firebase.init';
+import axios from 'axios';
 
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
+    const [role, setRole] = useState(user?.email);
     const [authLoading, setAuthLoading] = useState(true);
 
     const signUp = (email, password) => {
@@ -33,9 +35,20 @@ const AuthProvider = ({ children }) => {
         })
         return () => unsubscribe();
     }, [])
+    useEffect(() => {
+        if (!user) {
+            return
+        } else {
+            axios.get(`http://localhost:3568/users/role/${user?.email}`)
+                .then(response => {
+                    setRole(response.data);
+                }).catch(error => console.log(error));
+        }
+    }, [user])
 
     const contexts = {
         user,
+        role,
         authLoading,
         setUser,
         signUp,
