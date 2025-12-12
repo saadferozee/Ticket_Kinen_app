@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+.active {
+    box-sizing: border-box;
+    border: 1px solid #D9C296;
+}
+
+* {
+    font-stretch: 125%;
+}
+
+.title {
+    font-stretch: 150%;
+}
