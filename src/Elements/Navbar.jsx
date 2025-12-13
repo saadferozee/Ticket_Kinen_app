@@ -1,28 +1,16 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
 import AuthContext from '../Contexts/AuthContext';
-import { FaCloudMoon } from "react-icons/fa";
-import { FaCloudSun } from "react-icons/fa";
 import { HiTicket } from "react-icons/hi2";
 import { CgMenuLeft } from "react-icons/cg";
 import ReactTooltip from './ReactTooltip';
-import ThemeContext from '../Contexts/ThemeContext';
 import Swal from 'sweetalert2';
+import DarkThemeToggle from '../Components/DarkThemeToggle';
 
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
-    const { darkTheme, setDarkTheme } = useContext(ThemeContext);
-
-    useEffect(() => {
-        const html = document.documentElement;
-        if (darkTheme) {
-            html.setAttribute("data-theme", "dark")
-        } else {
-            html.setAttribute("data-theme", "light")
-        }
-    }, [darkTheme])
 
     const handleLogOutbutton = () => {
         Swal.fire({
@@ -90,10 +78,10 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="navbar-end flex items-center gap-4">
-                        <button className='text-2xl text-[#D9C296] cursor-pointer' title='Click to change theme.' onClick={() => setDarkTheme(!darkTheme)}>{darkTheme ? <FaCloudMoon /> : <FaCloudSun />}</button>
                         {
                             user ? (
                                 <div className='flex items-center gap-2'>
+                                    <DarkThemeToggle />
                                     <ReactTooltip id='logout' content={'Click to open dashboard'} place={'bottom-end'}>
                                         <Link to={'/dashboard'} className="px-4 pt-1.5 pb-1.75 rounded-full bg-[#D9C296] text-[#0A2F23] cursor-pointer">Dashboard</Link>
                                     </ReactTooltip>

@@ -13,6 +13,12 @@ import MyProfile from "../Pages/MyProfile";
 import ManageTickets from "../Pages/ManageTickets";
 import ManageUsers from "../Pages/ManageUsers";
 import AdvertiseTickets from "../Pages/AdvertiseTickets";
+import AddTicket from "../Pages/AddTicket";
+import MyAddedTickets from "../Pages/MyAddedTickets";
+import RequestedBookings from "../Pages/RequestedBookings";
+import RevenueOverview from "../Pages/RevenueOverview";
+import MyBookedTickets from "../Pages/MyBookedTickets";
+import TransactionHistory from "../Pages/TransactionHistory";
 
 const router = createBrowserRouter([
     {
@@ -32,9 +38,18 @@ const router = createBrowserRouter([
         children: [
             { path: '/dashboard/home', element: <Dashboard /> },
             { path: '/dashboard/my-profile', element: <MyProfile /> },
+            // Admin Routes
             { path: '/dashboard/manage-tickets', element: <ManageTickets /> },
             { path: '/dashboard/manage-users', element: <ManageUsers /> },
             { path: '/dashboard/advertise-tickets', element: <AdvertiseTickets /> },
+            // Vendor Routes
+            { path: '/dashboard/add-ticket', element: <AddTicket /> },
+            { path: '/dashboard/my-added-tickets', element: <MyAddedTickets /> },
+            { path: '/dashboard/requested-bookings', element: <RequestedBookings /> },
+            { path: '/dashboard/revenue-overview', element: <RevenueOverview /> },
+            // User Routes
+            { path: '/dashboard/my-booked-tickets', element: <MyBookedTickets /> },
+            { path: '/dashboard/transaction-history', element: <TransactionHistory /> }
         ]
     }
 ])

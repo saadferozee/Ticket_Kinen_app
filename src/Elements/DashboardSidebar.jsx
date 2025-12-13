@@ -4,10 +4,13 @@ import { useState } from 'react';
 import { TbLayoutSidebarRightCollapseFilled, TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { FaHome, FaUser, FaUserCog } from "react-icons/fa";
 import { IoTicket } from "react-icons/io5";
-import { MdOutlineExitToApp } from "react-icons/md";
+import { MdHistory, MdOutlineExitToApp } from "react-icons/md";
 import { RiAdvertisementFill } from "react-icons/ri";
+import { LuCalendarSearch, LuTicketCheck, LuTicketPlus, LuTickets } from "react-icons/lu";
 import { useContext } from 'react';
 import AuthContext from '../Contexts/AuthContext';
+import DarkThemeToggle from '../Components/DarkThemeToggle';
+import { FaFileInvoiceDollar } from 'react-icons/fa6';
 
 const DashboardSidebar = ({ children }) => {
 
@@ -21,14 +24,17 @@ const DashboardSidebar = ({ children }) => {
                     <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
                     <div className="drawer-content">
                         {/* Navbar */}
-                        <nav className="navbar w-full bg-[#0a2f23d0] text-[#D9C296]">
-                            <label onClick={() => setDrawerOpen(!drawerOpen)} htmlFor="my-drawer-4" aria-label="open sidebar" className='cursor-pointer'>
-                                {/* Sidebar toggle icon */}
-                                <span className='text-3xl text-shadow-lg'>{!drawerOpen ? <TbLayoutSidebarRightCollapseFilled /> : <TbLayoutSidebarLeftCollapseFilled />}</span>
-                            </label>
-                            <h1 className="px-4 font-semibold text-2xl text-shadow-lg">
-                                {role === 'admin' ? 'Admin Dashboard' : role === 'vendor' ? 'Vendor Dashboard' : 'User Dashboard'}
-                            </h1>
+                        <nav className="navbar w-full pr-6 flex justify-between bg-[#0a2f23d0] shadow-xl shadow-[#ffffff10] text-[#D9C296]">
+                            <div className='flex'>
+                                <label onClick={() => setDrawerOpen(!drawerOpen)} htmlFor="my-drawer-4" aria-label="open sidebar" className='cursor-pointer'>
+                                    {/* Sidebar toggle icon */}
+                                    <span className='text-3xl text-shadow-lg'>{!drawerOpen ? <TbLayoutSidebarRightCollapseFilled /> : <TbLayoutSidebarLeftCollapseFilled />}</span>
+                                </label>
+                                <h1 className="px-4 font-semibold text-2xl text-shadow-lg">
+                                    {role === 'admin' ? 'Admin Dashboard' : role === 'vendor' ? 'Vendor Dashboard' : 'User Dashboard'}
+                                </h1>
+                            </div>
+                            <DarkThemeToggle />
                         </nav>
                         {/* Page content here */}
                         <div className="p-4">
@@ -49,24 +55,73 @@ const DashboardSidebar = ({ children }) => {
                                             <span className="is-drawer-close:hidden">Homepage</span>
                                         </NavLink>
                                     </li>
-                                    <li>
-                                        <NavLink to={'/dashboard/manage-tickets'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
-                                            <span><IoTicket className='text-[23px]' /></span>
-                                            <span className="is-drawer-close:hidden">Manage Tickets</span>
-                                        </NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink to={'/dashboard/manage-users'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
-                                            <span><FaUserCog className='text-[23px]' /></span>
-                                            <span className="is-drawer-close:hidden">Manage Users</span>
-                                        </NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink to={'/dashboard/advertise-tickets'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
-                                            <span><RiAdvertisementFill className='text-[23px]' /></span>
-                                            <span className="is-drawer-close:hidden">Advertise Tickets</span>
-                                        </NavLink>
-                                    </li>
+                                    {
+                                        role === 'admin' ? (
+                                            <>
+                                                <li>
+                                                    <NavLink to={'/dashboard/manage-tickets'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                        <span><IoTicket className='text-[23px]' /></span>
+                                                        <span className="is-drawer-close:hidden">Manage Tickets</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to={'/dashboard/manage-users'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                        <span><FaUserCog className='text-[23px]' /></span>
+                                                        <span className="is-drawer-close:hidden">Manage Users</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to={'/dashboard/advertise-tickets'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                        <span><RiAdvertisementFill className='text-[23px]' /></span>
+                                                        <span className="is-drawer-close:hidden">Advertise Tickets</span>
+                                                    </NavLink>
+                                                </li>
+                                            </>
+                                        ) : role === 'vendor' ? (
+                                            <>
+                                                <li>
+                                                    <NavLink to={'/dashboard/add-ticket'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                        <span><LuTicketPlus className='text-[23px] rotate-340' /></span>
+                                                        <span className="is-drawer-close:hidden">Add Ticket</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to={'/dashboard/my-added-tickets'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                        <span><LuTicketCheck className='text-[23px] rotate-340' /></span>
+                                                        <span className="is-drawer-close:hidden">My Added Tickets</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to={'/dashboard/requested-bookings'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                        <span><LuCalendarSearch className='text-[23px]' /></span>
+                                                        <span className="is-drawer-close:hidden">Requested Bookings</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to={'/dashboard/revenue-overview'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                        <span><FaFileInvoiceDollar className='text-[23px]' /></span>
+                                                        <span className="is-drawer-close:hidden">Revenue Overview</span>
+                                                    </NavLink>
+                                                </li>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <li>
+                                                    <NavLink to={'/dashboard/my-booked-tickets'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                        <span><LuTickets className='text-[23px]' /></span>
+                                                        <span className="is-drawer-close:hidden">My Booked Tickets</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to={'/dashboard/transaction-history'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                        <span><MdHistory className='text-[23px]' /></span>
+                                                        <span className="is-drawer-close:hidden">Transaction History</span>
+                                                    </NavLink>
+                                                </li>
+                                            </>
+                                        )
+                                    }
+
                                 </div>
                                 <div className='space-y-3'>
                                     <li>
