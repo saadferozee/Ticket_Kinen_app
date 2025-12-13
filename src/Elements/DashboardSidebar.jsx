@@ -50,7 +50,7 @@ const DashboardSidebar = ({ children }) => {
                                 {/* List items */}
                                 <div className='space-y-3'>
                                     <li>
-                                        <NavLink to={'/dashboard/home'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                        <NavLink to={'/dashboard/home'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
                                             <span><FaHome className='text-[23px]' /></span>
                                             <span className="is-drawer-close:hidden">Homepage</span>
                                         </NavLink>
@@ -59,19 +59,19 @@ const DashboardSidebar = ({ children }) => {
                                         role === 'admin' ? (
                                             <>
                                                 <li>
-                                                    <NavLink to={'/dashboard/manage-tickets'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                    <NavLink to={'/dashboard/manage-tickets'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
                                                         <span><IoTicket className='text-[23px]' /></span>
                                                         <span className="is-drawer-close:hidden">Manage Tickets</span>
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to={'/dashboard/manage-users'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                    <NavLink to={'/dashboard/manage-users'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
                                                         <span><FaUserCog className='text-[23px]' /></span>
                                                         <span className="is-drawer-close:hidden">Manage Users</span>
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to={'/dashboard/advertise-tickets'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                    <NavLink to={'/dashboard/advertise-tickets'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
                                                         <span><RiAdvertisementFill className='text-[23px]' /></span>
                                                         <span className="is-drawer-close:hidden">Advertise Tickets</span>
                                                     </NavLink>
@@ -80,25 +80,25 @@ const DashboardSidebar = ({ children }) => {
                                         ) : role === 'vendor' ? (
                                             <>
                                                 <li>
-                                                    <NavLink to={'/dashboard/add-ticket'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                    <NavLink to={'/dashboard/add-ticket'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
                                                         <span><LuTicketPlus className='text-[23px] rotate-340' /></span>
                                                         <span className="is-drawer-close:hidden">Add Ticket</span>
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to={'/dashboard/my-added-tickets'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                    <NavLink to={'/dashboard/my-added-tickets'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
                                                         <span><LuTicketCheck className='text-[23px] rotate-340' /></span>
                                                         <span className="is-drawer-close:hidden">My Added Tickets</span>
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to={'/dashboard/requested-bookings'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                    <NavLink to={'/dashboard/requested-bookings'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
                                                         <span><LuCalendarSearch className='text-[23px]' /></span>
                                                         <span className="is-drawer-close:hidden">Requested Bookings</span>
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to={'/dashboard/revenue-overview'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                    <NavLink to={'/dashboard/revenue-overview'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
                                                         <span><FaFileInvoiceDollar className='text-[23px]' /></span>
                                                         <span className="is-drawer-close:hidden">Revenue Overview</span>
                                                     </NavLink>
@@ -107,13 +107,13 @@ const DashboardSidebar = ({ children }) => {
                                         ) : (
                                             <>
                                                 <li>
-                                                    <NavLink to={'/dashboard/my-booked-tickets'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                    <NavLink to={'/dashboard/my-booked-tickets'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
                                                         <span><LuTickets className='text-[23px]' /></span>
                                                         <span className="is-drawer-close:hidden">My Booked Tickets</span>
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to={'/dashboard/transaction-history'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                                    <NavLink to={'/dashboard/transaction-history'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
                                                         <span><MdHistory className='text-[23px]' /></span>
                                                         <span className="is-drawer-close:hidden">Transaction History</span>
                                                     </NavLink>
@@ -125,13 +125,13 @@ const DashboardSidebar = ({ children }) => {
                                 </div>
                                 <div className='space-y-3'>
                                     <li>
-                                        <NavLink to={'/dashboard/my-profile'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                        <NavLink to={'/dashboard/my-profile'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
                                             <span><FaUser className='text-[23px]' /></span>
                                             <span className="is-drawer-close:hidden">My Profile</span>
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <Link to={'/'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right">
+                                        <Link to={'/'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
                                             <span><MdOutlineExitToApp className='text-[24px] rotate-180' /></span>
                                             <span className="is-drawer-close:hidden">Exit Dashboard</span>
                                         </Link>

@@ -4,10 +4,14 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { HiTicket } from "react-icons/hi2";
 import { LuDot } from "react-icons/lu";
 
+
+// I can make Footer better than this, but requirement of this footer is sucks.
+
+
 const Footer = () => {
     return (
-        <div className='bg-[#0A2F23] text-[#D9C296] py-1'>
-            <footer className="footer footer-horizontal footer-center p-4">
+        <div className='w-full bg-[#0A2F23] py-1'>
+            <footer className="footer max-w-[1200px] mx-auto sm:footer-horizontal bg-[#0A2F23] text-[#D9C296] p-10">
                 <aside>
                     <h1><HiTicket className='mb-0 text-5xl rotate-325' /></h1>
                     <p>
@@ -29,16 +33,27 @@ const Footer = () => {
                     </div>
                 </aside>
                 <nav>
-                    <div className="flex items-center gap-2 text-sm font-light">
-                        <a href='/'>About</a>
-                        <span><LuDot /></span>
-                        <a href='/'>Privacy Policy</a>
-                        <span><LuDot /></span>
-                        <a href='/'>Terms and Conditions</a>
-                    </div>
+                    <h6 className="footer-title">Quick Links</h6>
+                    <a className="link link-hover">Home</a>
+                    <a className="link link-hover">All Tickets</a>
+                    <a className="link link-hover">Dashboard</a>
+                    <a className="link link-hover">Advertisement</a>
                 </nav>
-                <p className='font-extralight text-xs opacity-60'>Copyright © {new Date().getFullYear()} - All right reserved by Saad Ferozee</p>
+                <nav>
+                    <h6 className="footer-title">Contacts Info</h6>
+                    <a className="link link-hover">Email</a>
+                    <a className="link link-hover">Phone</a>
+                    <a className="link link-hover">Facebook Page</a>
+                    <a className="link link-hover">About Us</a>
+                </nav>
+                <nav>
+                    <h6 className="footer-title">Payment Methods</h6>
+                    <a className="link link-hover">Bkash</a>
+                    <a className="link link-hover">Nagad</a>
+                    <a className="link link-hover">Stripe</a>
+                </nav>
             </footer>
+            <p className='font-extralight text-xs text-center opacity-60'>Copyright © {new Date().getFullYear()} - All right reserved by Saad Ferozee</p>
         </div>
     );
 };
