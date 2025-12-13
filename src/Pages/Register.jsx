@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 
 const Register = () => {
 
-    const { setUser, signUp, loginWithGoogle, updateUser } = useContext(AuthContext);
+    const { setUser, signUp, loginWithGoogle, userDataSaveToDB, updateUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const [passError, setPassError] = useState('');
@@ -72,9 +72,7 @@ const Register = () => {
                         })
                         .catch(error => console.log(error));
                     const user = { name, phone, email, password, photoURL };
-                    axios.post('http://localhost:3568/users', user)
-                        .then(res => console.log(res.data))
-                        .catch(error => console.log(error));
+                    userDataSaveToDB(user);
                     Swal.fire({
                         title: "User Registration Successful.",
                         text: "Now you can surf this website freely, anything sell or buy, any pet you adopt or list for adopt.",
@@ -100,7 +98,16 @@ const Register = () => {
     const handleGoogleLogin = () => {
         loginWithGoogle()
             .then(credential => {
-                setUser(credential.user);
+                const currentUser = credential.user;
+                setUser(currentUser);
+                const user = {
+                    name: currentUser.displayName,
+                    phone: currentUser.phoneNumber,
+                    email: currentUser.email,
+                    password: { loginType: 'Google LogIn' },
+                    photoURL: currentUser.photoURL
+                }
+                userDataSaveToDB(user);
                 Swal.fire({
                     title: "User Registration Successful.",
                     text: "You can surf this website freely, anything you sell or buy, any pet you adopt or list for adopt.",

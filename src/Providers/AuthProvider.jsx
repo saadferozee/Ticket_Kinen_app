@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { RouterContextProvider } from 'react-router';
 import AuthContext from '../Contexts/AuthContext';
 import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut, onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../Firebase/firebase.init';
@@ -8,7 +7,7 @@ import axios from 'axios';
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
-    const [role, setRole] = useState(user?.email);
+    const [role, setRole] = useState(null);
     const [authLoading, setAuthLoading] = useState(true);
 
     const signUp = (email, password) => {
@@ -23,6 +22,16 @@ const AuthProvider = ({ children }) => {
     const googleProvider = new GoogleAuthProvider();
     const loginWithGoogle = () => {
         return signInWithPopup(auth, googleProvider);
+    }
+    const userDataSaveToDB = async (user) => {
+        const isUserExistedRes = await axios.get(`http://localhost:3568/users/user/${user?.email}`);
+        if (isUserExistedRes.data) {
+            return
+        } else {
+            await axios.post('http://localhost:3568/users', user)
+                .then(res => console.log(res.data))
+                .catch(error => console.log(error));
+        }
     }
     const updateUser = (name, photoURL) => {
         return updateProfile(auth.currentUser, { displayName: name, photoURL: photoURL })
@@ -55,6 +64,7 @@ const AuthProvider = ({ children }) => {
         authLoading,
         setUser,
         signUp,
+        userDataSaveToDB,
         logIn,
         resetPassword,
         loginWithGoogle,

@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 const Login = () => {
 
-    const { setUser, logIn, loginWithGoogle } = useContext(AuthContext);
+    const { setUser, logIn, loginWithGoogle, userDataSaveToDB } = useContext(AuthContext);
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
@@ -42,7 +42,16 @@ const Login = () => {
     const handleGoogleLogin = () => {
         loginWithGoogle()
             .then(credential => {
-                setUser(credential.user);
+                const currentUser = credential.user;
+                setUser(currentUser);
+                const user = {
+                    name: currentUser.displayName,
+                    phone: currentUser.phoneNumber,
+                    email: currentUser.email,
+                    password: { loginType: 'Google LogIn' },
+                    photoURL: currentUser.photoURL
+                }
+                userDataSaveToDB(user);
                 Swal.fire({
                     title: "You are Logged In.",
                     text: "Now you can surf this website freely, anything sell or buy, any pet you adopt or list for adopt.",
