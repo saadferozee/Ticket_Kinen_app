@@ -10,6 +10,7 @@ import VendorDashboard from "../Pages/VendorDashboard";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import PrivateRoute from "./PrivateRoute";
+import ForgetPass from "../Pages/ForgetPass";
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
             { index: true, element: <Home /> },
             { path: '/all-tickets', element: <PrivateRoute><AllTickets></AllTickets></PrivateRoute> },
             { path: '/login', element: <Login /> },
+            { path: '/forget-pass/:email', element: <ForgetPass /> },
             { path: '/register', element: <Register /> }
         ]
     },

@@ -4,10 +4,12 @@ import AuthContext from '../Contexts/AuthContext';
 import Swal from 'sweetalert2';
 
 import { FcGoogle } from "react-icons/fc";
+import { useState } from 'react';
 
 const Login = () => {
 
     const { setUser, logIn, loginWithGoogle } = useContext(AuthContext);
+    const [email, setEmail] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -68,15 +70,20 @@ const Login = () => {
                             <h2 className='pl-2 text-2xl text-[#D9C296]'>Login</h2>
 
                             {/* <label className="label">Email</label> */}
-                            <input type="email" name='email' className="input px-6 w-full rounded-full border border-[#D9C296]" placeholder="Email" />
+                            <input
+                                type="email"
+                                name='email'
+                                onChange={e => setEmail(e.target.value)}
+                                className="input px-6 w-full rounded-full border border-[#D9C296]"
+                                placeholder="Email"
+                            />
 
                             {/* <label className="label">Password</label> */}
                             <input type="password" name='password' className="input px-6 w-full rounded-full border border-[#D9C296]" placeholder="Password" />
 
                             <p className='pl-2 text-xs text-[#D9C296]'>
-                                <span>Forgot your password ? </span>
-                                <Link to={'/register'} className='link'>Send</Link>
-                                <span> reset password email </span>
+                                    <span>Forget Password ? click on </span>
+                                    <Link className='link text-shadow-lg text-shadow-[#00000020]' to={`/forget-pass/${email ? email : 'example@gmail.com'}`}>Reset Password</Link>
                             </p>
 
                             <div className='flex flex-col'>

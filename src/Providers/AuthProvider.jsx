@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { RouterContextProvider } from 'react-router';
 import AuthContext from '../Contexts/AuthContext';
-import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut, onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../Firebase/firebase.init';
 import axios from 'axios';
 
@@ -16,6 +16,9 @@ const AuthProvider = ({ children }) => {
     }
     const logIn = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password);
+    }
+    const resetPassword = (email) => {
+        return sendPasswordResetEmail(auth, email);
     }
     const googleProvider = new GoogleAuthProvider();
     const loginWithGoogle = () => {
@@ -41,7 +44,7 @@ const AuthProvider = ({ children }) => {
         } else {
             axios.get(`http://localhost:3568/users/role/${user?.email}`)
                 .then(response => {
-                    setRole(response.data);
+                    setRole(response.data === import.meta.env.VITE_ADMIN_ROLE ? 'admin' : response.data === import.meta.env.VITE_VENDOR_ROLE ? 'vendor' : 'user');
                 }).catch(error => console.log(error));
         }
     }, [user])
@@ -53,6 +56,7 @@ const AuthProvider = ({ children }) => {
         setUser,
         signUp,
         logIn,
+        resetPassword,
         loginWithGoogle,
         updateUser,
         logOut
