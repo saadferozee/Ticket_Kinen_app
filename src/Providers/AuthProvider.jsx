@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import AuthContext from '../Contexts/AuthContext';
 import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut, onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../Firebase/firebase.init';
-import axios from 'axios';
+import useAxios from '../Hooks/useAxios';
 
 const AuthProvider = ({ children }) => {
 
+    const axiosInstance = useAxios();
     const [user, setUser] = useState(null);
     const [role, setRole] = useState(null);
     const [authLoading, setAuthLoading] = useState(true);
@@ -24,11 +25,11 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, googleProvider);
     }
     const userDataSaveToDB = async (user) => {
-        const isUserExistedRes = await axios.get(`http://localhost:3568/users/user/${user?.email}`);
+        const isUserExistedRes = await axiosInstance.get(`/users/user/${user?.email}`);
         if (isUserExistedRes.data) {
             return
         } else {
-            await axios.post('http://localhost:3568/users', user)
+            await axiosInstance.post('/users', user)
                 .then(res => console.log(res.data))
                 .catch(error => console.log(error));
         }
@@ -51,12 +52,12 @@ const AuthProvider = ({ children }) => {
         if (!user) {
             return
         } else {
-            axios.get(`http://localhost:3568/users/role/${user?.email}`)
+            axiosInstance.get(`/users/role/${user?.email}`)
                 .then(response => {
                     setRole(response.data === import.meta.env.VITE_ADMIN_ROLE ? 'admin' : response.data === import.meta.env.VITE_VENDOR_ROLE ? 'vendor' : 'user');
                 }).catch(error => console.log(error));
         }
-    }, [user])
+    }, [user, axiosInstance])
 
     const contexts = {
         user,
