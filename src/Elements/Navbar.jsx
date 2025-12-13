@@ -83,7 +83,7 @@ const Navbar = () => {
                                 <div className='flex items-center gap-2'>
                                     <DarkThemeToggle />
                                     <ReactTooltip id='logout' content={'Click to open dashboard'} place={'bottom-end'}>
-                                        <Link to={'/dashboard'} className="px-4 pt-1.5 pb-1.75 rounded-full bg-[#D9C296] text-[#0A2F23] cursor-pointer">Dashboard</Link>
+                                        <Link to={'/dashboard/home'} className="px-4 pt-1.5 pb-1.75 rounded-full bg-[#D9C296] text-[#0A2F23] cursor-pointer">Dashboard</Link>
                                     </ReactTooltip>
                                     <div className="dropdown dropdown-bottom dropdown-end">
                                         <div tabIndex={0} role="button">

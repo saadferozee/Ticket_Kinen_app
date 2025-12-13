@@ -3,9 +3,9 @@ import AuthContext from '../Contexts/AuthContext';
 import { Navigate, useLocation } from 'react-router';
 import Loading from '../Components/Loading';
 
-const PrivateRoute = ({ children }) => {
+const PrivateRoute = ({ children, authorization }) => {
 
-    const { user, authLoading } = useContext(AuthContext);
+    const { user, role, authLoading } = useContext(AuthContext);
     const location = useLocation();
 
     if (authLoading) {
@@ -14,7 +14,7 @@ const PrivateRoute = ({ children }) => {
         )
     }
 
-    if (user) {
+    if (user && (authorization === role || authorization === 'all-user')) {
         return <>{children}</>
     } else {
         return <Navigate state={location.pathname} to={'/login'}></Navigate>

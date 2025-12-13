@@ -25,10 +25,10 @@ const DashboardSidebar = ({ children }) => {
                     <div className="drawer-content">
                         {/* Navbar */}
                         <nav className="navbar w-full pr-6 flex justify-between bg-[#0a2f23d0] shadow-xl shadow-[#ffffff10] text-[#D9C296]">
-                            <div className='flex'>
+                            <div className='flex items-center'>
                                 <label onClick={() => setDrawerOpen(!drawerOpen)} htmlFor="my-drawer-4" aria-label="open sidebar" className='cursor-pointer'>
                                     {/* Sidebar toggle icon */}
-                                    <span className='text-3xl text-shadow-lg'>{!drawerOpen ? <TbLayoutSidebarRightCollapseFilled /> : <TbLayoutSidebarLeftCollapseFilled />}</span>
+                                    <span className='text-2xl text-shadow-lg'>{!drawerOpen ? <TbLayoutSidebarRightCollapseFilled /> : <TbLayoutSidebarLeftCollapseFilled />}</span>
                                 </label>
                                 <h1 className="px-4 font-semibold text-2xl text-shadow-lg">
                                     {role === 'admin' ? 'Admin Dashboard' : role === 'vendor' ? 'Vendor Dashboard' : 'User Dashboard'}

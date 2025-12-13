@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         element: <HomeLayout />,
         children: [
             { index: true, element: <Home /> },
-            { path: '/all-tickets', element: <PrivateRoute><AllTickets></AllTickets></PrivateRoute> },
+            { path: '/all-tickets', element: <PrivateRoute authorization={'all-user'}><AllTickets></AllTickets></PrivateRoute> },
             { path: '/login', element: <Login /> },
             { path: '/forget-pass/:email', element: <ForgetPass /> },
             { path: '/register', element: <Register /> }
@@ -34,22 +34,22 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        element:<DashboardLayout></DashboardLayout>,
         children: [
-            { path: '/dashboard/home', element: <Dashboard /> },
-            { path: '/dashboard/my-profile', element: <MyProfile /> },
+            { path: '/dashboard/home', element: <PrivateRoute authorization={'all-user'}><Dashboard /></PrivateRoute> },
+            { path: '/dashboard/my-profile', element: <PrivateRoute authorization={'all-user'}><MyProfile /></PrivateRoute> },
             // Admin Routes
-            { path: '/dashboard/manage-tickets', element: <ManageTickets /> },
-            { path: '/dashboard/manage-users', element: <ManageUsers /> },
-            { path: '/dashboard/advertise-tickets', element: <AdvertiseTickets /> },
+            { path: '/dashboard/manage-tickets', element: <PrivateRoute authorization={'admin'}><ManageTickets /></PrivateRoute> },
+            { path: '/dashboard/manage-users', element: <PrivateRoute authorization={'admin'}><ManageUsers /></PrivateRoute> },
+            { path: '/dashboard/advertise-tickets', element: <PrivateRoute authorization={'admin'}><AdvertiseTickets /></PrivateRoute> },
             // Vendor Routes
-            { path: '/dashboard/add-ticket', element: <AddTicket /> },
-            { path: '/dashboard/my-added-tickets', element: <MyAddedTickets /> },
-            { path: '/dashboard/requested-bookings', element: <RequestedBookings /> },
-            { path: '/dashboard/revenue-overview', element: <RevenueOverview /> },
+            { path: '/dashboard/add-ticket', element: <PrivateRoute authorization={'vendor'}><AddTicket /></PrivateRoute> },
+            { path: '/dashboard/my-added-tickets', element: <PrivateRoute authorization={'vendor'}><MyAddedTickets /></PrivateRoute> },
+            { path: '/dashboard/requested-bookings', element: <PrivateRoute authorization={'vendor'}><RequestedBookings /></PrivateRoute> },
+            { path: '/dashboard/revenue-overview', element: <PrivateRoute authorization={'vendor'}><RevenueOverview /></PrivateRoute> },
             // User Routes
-            { path: '/dashboard/my-booked-tickets', element: <MyBookedTickets /> },
-            { path: '/dashboard/transaction-history', element: <TransactionHistory /> }
+            { path: '/dashboard/my-booked-tickets', element: <PrivateRoute authorization={'user'}><MyBookedTickets /></PrivateRoute> },
+            { path: '/dashboard/transaction-history', element: <PrivateRoute authorization={'user'}><TransactionHistory /></PrivateRoute> }
         ]
     }
 ])
