@@ -14,7 +14,7 @@ const ForgetPass = ({ params }) => {
         const currentEmail = e.target.email.value;
         resetPassword(currentEmail)
             .then(() => {
-                window.open("https://mail.google.com", "_blank");
+                window.open("https://mail.google.com/mail/u/0/?tab=rm&ogbl#spam", "_blank");
                 navigate('/login');
             })
             .catch(error => console.log(error));
