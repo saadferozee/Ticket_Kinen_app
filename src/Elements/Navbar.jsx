@@ -7,6 +7,7 @@ import { HiTicket } from "react-icons/hi2";
 import { CgMenuLeft } from "react-icons/cg";
 import ReactTooltip from './ReactTooltip';
 import ThemeContext from '../Contexts/ThemeContext';
+import Swal from 'sweetalert2';
 
 
 const Navbar = () => {
@@ -23,12 +24,27 @@ const Navbar = () => {
         }
     }, [darkTheme])
 
-    const handleLogOutbutton = e => {
-        e.preventDefault();
-        logOut()
-            .then(() => {
-                console.log('user logged out successfully')
-            }).catch(error => console.log(error));
+    const handleLogOutbutton = () => {
+        Swal.fire({
+            title: "Sure?",
+            text: "Did you want to Log Out ??",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Log Out!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logOut()
+                    .then(() => {
+                        Swal.fire({
+                            title: "Logged Out!",
+                            text: "You are logged out successfully.",
+                            icon: 'success'
+                        });
+                    }).catch(error => console.log(error));
+            }
+        })
     }
 
     const links = <div className={`flex ${user ? 'gap-1' : 'gap-3'} font-stretch-125% text-[#D9C296] text-md`}>
@@ -81,24 +97,30 @@ const Navbar = () => {
                                     <ReactTooltip id='logout' content={'Click to open dashboard'} place={'bottom-end'}>
                                         <Link to={'/dashboard'} className="px-4 pt-1.5 pb-1.75 rounded-full bg-[#D9C296] text-[#0A2F23] cursor-pointer">Dashboard</Link>
                                     </ReactTooltip>
-                                    <button onClick={handleLogOutbutton}>
-                                        {
-                                            user.photoURL ? (
-                                                <img
-                                                    title={`click to go Profile of User: ${user.displayName}`}
-                                                    className='w-10 h-10 object-cover border-2 border-[#D9C296] p-0.5 rounded-full'
-                                                    src={user.photoURL || 'https://img.icons8.com/ink/96/f7f3e9/user-male-circle.png'}
-                                                    alt="DP"
-                                                    referrerPolicy="no-referrer"
-                                                    onError={(e) => {
-                                                        e.currentTarget.src = 'https://img.icons8.com/ink/96/f7f3e9/user-male-circle.png';
-                                                    }}
-                                                />
-                                            ) : (
-                                                <img title={`click to go Profile of User: ${user.displayName}`} width={40} className='rounded-full' src={'https://img.icons8.com/ink/96/f7f3e9/user-male-circle.png'} alt="DP" />
-                                            )
-                                        }
-                                    </button>
+                                    <div className="dropdown dropdown-bottom dropdown-end">
+                                        <div tabIndex={0} role="button">
+                                            {
+                                                user.photoURL ? (
+                                                    <img
+                                                        title={`click to go Profile of User: ${user.displayName}`}
+                                                        className='w-10 h-10 object-cover border-2 border-[#D9C296] p-0.5 rounded-full'
+                                                        src={user.photoURL || 'https://img.icons8.com/ink/96/f7f3e9/user-male-circle.png'}
+                                                        alt="DP"
+                                                        referrerPolicy="no-referrer"
+                                                        onError={(e) => {
+                                                            e.currentTarget.src = 'https://img.icons8.com/ink/96/f7f3e9/user-male-circle.png';
+                                                        }}
+                                                    />
+                                                ) : (
+                                                    <img title={`click to go Profile of User: ${user.displayName}`} width={40} className='rounded-full' src={'https://img.icons8.com/ink/96/f7f3e9/user-male-circle.png'} alt="DP" />
+                                                )
+                                            }
+                                        </div>
+                                        <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                                            <li><button type='button' onClick={handleLogOutbutton}>Log Out</button></li>
+                                            <li><a href='/dashboard/my-profile'>My Profile</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             ) : (
                                 <div className='flex gap-1'>
