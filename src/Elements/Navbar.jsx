@@ -12,7 +12,7 @@ import ThemeContext from '../Contexts/ThemeContext';
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
-    const { darkTheme, setDarkTheme} = useContext(ThemeContext);
+    const { darkTheme, setDarkTheme } = useContext(ThemeContext);
 
     useEffect(() => {
         const html = document.documentElement;
@@ -84,7 +84,16 @@ const Navbar = () => {
                                     <button onClick={handleLogOutbutton}>
                                         {
                                             user.photoURL ? (
-                                                <img title={`click to go Profile of User: ${user.displayName}`} className='w-10 h-10 object-cover border-2 border-[#D9C296] p-0.5 rounded-full' src={`${user.photoURL ? user.photoURL : 'https://img.icons8.com/ink/96/f7f3e9/user-male-circle.png'}`} alt="DP" />
+                                                <img
+                                                    title={`click to go Profile of User: ${user.displayName}`}
+                                                    className='w-10 h-10 object-cover border-2 border-[#D9C296] p-0.5 rounded-full'
+                                                    src={user.photoURL || 'https://img.icons8.com/ink/96/f7f3e9/user-male-circle.png'}
+                                                    alt="DP"
+                                                    referrerPolicy="no-referrer"
+                                                    onError={(e) => {
+                                                        e.currentTarget.src = 'https://img.icons8.com/ink/96/f7f3e9/user-male-circle.png';
+                                                    }}
+                                                />
                                             ) : (
                                                 <img title={`click to go Profile of User: ${user.displayName}`} width={40} className='rounded-full' src={'https://img.icons8.com/ink/96/f7f3e9/user-male-circle.png'} alt="DP" />
                                             )
