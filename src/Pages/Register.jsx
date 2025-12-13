@@ -13,8 +13,8 @@ const Register = () => {
     const [passError, setPassError] = useState('');
 
     const passCheck = pass => {
-        const lowercaseRegex = /^(?=.*[a-z]).+$/
-        const uppercaseRegex = /^(?=.*[A-Z]).+$/
+        const lowercaseRegex = /^(?=.*[a-z]).+$/;
+        const uppercaseRegex = /^(?=.*[A-Z]).+$/;
         const min6numRegex = /^.{6,}$/;
 
         if (pass.length > 3) {
