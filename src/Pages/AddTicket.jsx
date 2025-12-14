@@ -15,6 +15,8 @@ const AddTicket = () => {
 
         const form = e.target;
         const title = form.title.value;
+        const from = form.from.value;
+        const to = form.to.value;
         const category = form.category.value;
         const price = parseInt(form.price.value);
         const availableSits = parseInt(form.availableSits.value);
@@ -34,7 +36,7 @@ const AddTicket = () => {
         const photoURL = photoFileUploadRes.data.data.display_url
 
         if (photoFileUploadRes.data.success) {
-            const data = { title, category, price, availableSits, photoURL, time, date, breakfast, meal, water, security, vendorName: user?.displayName, vendorEmail: user?.email, onAdd: false }
+            const data = { title, category, from, to, price, availableSits, photoURL, time, date, breakfast, meal, water, security, vendorName: user?.displayName, vendorEmail: user?.email, onAdd: false, status: 'pending' }
 
             axiosInstance.post('/tickets', data)
                 .then(response => {
