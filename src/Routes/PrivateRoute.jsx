@@ -7,21 +7,10 @@ const PrivateRoute = ({ children, authorization }) => {
 
     const location = useLocation();
 
-    // if (authLoading || roleLoading) {
-    //     return <Loading viewHeight={70} color={'#556B2F'} />;
-    // }
-
-    // if (user && (authorization === role || authorization === 'all-user')) {
-    //     return children;
-    // }
-
-    // return <Navigate to="/login" state={location.pathname} />;
-
     const { user, role, authLoading, roleLoading } = useContext(AuthContext);
-    console.log(user, role, authLoading, roleLoading);
 
     if (authLoading || roleLoading) {
-        return <Loading viewHeight={70} color="#556B2F" />;
+        return <Loading viewHeight={70} color="#0A2F23" />;
     }
 
     if (!user) {

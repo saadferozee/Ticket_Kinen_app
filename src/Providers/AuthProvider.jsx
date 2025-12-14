@@ -50,7 +50,10 @@ const AuthProvider = ({ children }) => {
         return () => unsubscribe();
     }, [])
     useEffect(() => {
+        if (authLoading) return;
         if (!user) {
+            setRole(null)
+            setRoleLoading(false)
             return
         }
         setRoleLoading(true)
@@ -59,7 +62,7 @@ const AuthProvider = ({ children }) => {
                 setRole(response.data === import.meta.env.VITE_ADMIN_ROLE ? 'admin' : response.data === import.meta.env.VITE_VENDOR_ROLE ? 'vendor' : 'user');
             }).catch(error => console.log(error))
             .finally(() => setRoleLoading(false));
-    }, [user, axiosInstance])
+    }, [user, authLoading, axiosInstance])
 
 const contexts = {
     user,
