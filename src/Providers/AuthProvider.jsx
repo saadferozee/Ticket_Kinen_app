@@ -10,6 +10,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [role, setRole] = useState(null);
     const [authLoading, setAuthLoading] = useState(true);
+    const [roleLoading, setRoleLoading] = useState(true);
 
     const signUp = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
@@ -51,33 +52,35 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         if (!user) {
             return
-        } else {
-            axiosInstance.get(`/users/role/${user?.email}`)
-                .then(response => {
-                    setRole(response.data === import.meta.env.VITE_ADMIN_ROLE ? 'admin' : response.data === import.meta.env.VITE_VENDOR_ROLE ? 'vendor' : 'user');
-                }).catch(error => console.log(error));
         }
+        setRoleLoading(true)
+        axiosInstance.get(`/users/role/${user?.email}`)
+            .then(response => {
+                setRole(response.data === import.meta.env.VITE_ADMIN_ROLE ? 'admin' : response.data === import.meta.env.VITE_VENDOR_ROLE ? 'vendor' : 'user');
+            }).catch(error => console.log(error))
+            .finally(() => setRoleLoading(false));
     }, [user, axiosInstance])
 
-    const contexts = {
-        user,
-        role,
-        authLoading,
-        setUser,
-        signUp,
-        userDataSaveToDB,
-        logIn,
-        resetPassword,
-        loginWithGoogle,
-        updateUser,
-        logOut
-    }
+const contexts = {
+    user,
+    role,
+    authLoading,
+    roleLoading,
+    setUser,
+    signUp,
+    userDataSaveToDB,
+    logIn,
+    resetPassword,
+    loginWithGoogle,
+    updateUser,
+    logOut
+}
 
-    return (
-        <AuthContext.Provider value={contexts}>
-            {children}
-        </AuthContext.Provider>
-    );
+return (
+    <AuthContext.Provider value={contexts}>
+        {children}
+    </AuthContext.Provider>
+);
 };
 
 export default AuthProvider;
