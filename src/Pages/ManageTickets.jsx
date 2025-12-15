@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
-import useAxios from '../Hooks/useAxios';
 import { useEffect } from 'react';
 import Loading from '../Components/Loading';
 import { TbCircleCheck, TbClockExclamation, TbXboxX } from 'react-icons/tb';
@@ -9,13 +8,12 @@ import { FaBusSimple, FaHelicopter, FaPlane, FaShip } from 'react-icons/fa6';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 const ManageTickets = () => {
-    const axiosInstance = useAxios();
     const axiosSecure = useAxiosSecure();
     const [loading, setLoading] = useState(true);
     const [tickets, setTickets] = useState([]);
 
     const fetchTickets = () => {
-        axiosInstance.get(`tickets`)
+        axiosSecure.get(`tickets`)
             .then(response => {
                 setTickets(response.data);
                 setLoading(false);
