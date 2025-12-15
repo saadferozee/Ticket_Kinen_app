@@ -6,9 +6,8 @@ import Swal from 'sweetalert2';
 import useAxios from '../Hooks/useAxios';
 import { useEffect } from 'react';
 import Loading from '../Components/Loading';
-import { Link } from 'react-router';
-import { TbClockExclamation } from 'react-icons/tb';
-import { FaCheckCircle } from 'react-icons/fa';
+import { TbCircleCheck, TbClockExclamation, TbXboxX } from 'react-icons/tb';
+import { FaBusSimple, FaHelicopter, FaPlane, FaShip } from 'react-icons/fa6';
 
 const ManageTickets = () => {
     const { user } = useContext(AuthContext);
@@ -86,7 +85,7 @@ const ManageTickets = () => {
                                         <th>Price</th>
                                         <th>Time</th>
                                         <th>Date</th>
-                                        <th>Vendor's Name</th>
+                                        <th>Vendor</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -100,11 +99,11 @@ const ManageTickets = () => {
                                                     <div className="font-bold w-full">
                                                         {
                                                             ticket?.status === 'pending' ? (
-                                                                <span><TbClockExclamation className='text-[22px]' /></span>
+                                                                <span><TbClockExclamation className='text-[22px] text-yellow-600' /></span>
                                                             ) : ticket?.status === 'approved' ? (
-                                                                <span><FaCheckCircle className='text-[22px]' /></span>
+                                                                <span><TbCircleCheck className='text-[22px] text-green-500' /></span>
                                                             ) : ticket?.status === 'rejected' && (
-                                                                <span><TbXboxXFilled className='text-[22px]' /></span>
+                                                                <span><TbXboxX className='text-[22px] text-red-500' /></span>
                                                             )
                                                         }
                                                     </div>
@@ -124,8 +123,20 @@ const ManageTickets = () => {
                                                 </td>
                                                 <td className='w-[400px'>
                                                     <div>
-                                                        <div className="text-sm opacity-65">{ticket?.category}</div>
-                                                        <div className="font-bold"><span className='text-xs font-light'>From</span> <span>{ticket?.from}</span> <span className='text-xs font-light'>to</span> <span>{ticket?.to}</span></div>
+                                                        <h3 className="text-sm opacity-85">
+                                                            {
+                                                                ticket?.category === 'Bus' ? (
+                                                                    <span className='flex items-center gap-1 font-light text-[12px]'><FaBusSimple className='text-[14px] text-yellow-600' /> Bus</span>
+                                                                ) : ticket?.category === 'Launch' ? (
+                                                                    <span className='flex items-center gap-1 font-light text-[12px]'><FaShip className='text-[14px] text-green-500' /> Launch</span>
+                                                                ) : ticket?.category === 'Helicopter' ? (
+                                                                    <span className='flex items-center gap-1 font-light text-[12px]'><FaHelicopter className='text-[14px] text-green-500' /> Helicopter</span>
+                                                                ) : ticket?.category === 'Plane' && (
+                                                                    <span className='flex items-center gap-1 font-light text-[12px]'><FaPlane className='text-[14px] text-red-500' /> Plane</span>
+                                                                )
+                                                            }
+                                                        </h3>
+                                                        <div className="font-bold"><span className='text-sm font-light'>From</span> <span>{ticket?.from}</span> <span className='text-xs font-light'>to</span> <span>{ticket?.to}</span></div>
                                                     </div>
                                                 </td>
                                                 <td className='w-[100px'><p className='flex gap-1'>{ticket.availableSits} <span>left</span></p></td>

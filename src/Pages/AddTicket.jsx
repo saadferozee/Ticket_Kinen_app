@@ -1,13 +1,13 @@
 import React from 'react';
-import useAxios from '../Hooks/useAxios';
 import { useContext } from 'react';
 import AuthContext from '../Contexts/AuthContext';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 const AddTicket = () => {
 
-    const axiosInstance = useAxios();
+    const axiosSecure = useAxiosSecure();
     const { user } = useContext(AuthContext);
 
     const handleAddTicket = async e => {
@@ -38,7 +38,7 @@ const AddTicket = () => {
         if (photoFileUploadRes.data.success) {
             const data = { title, category, from, to, price, availableSits, photoURL, time, date, breakfast, meal, water, security, vendorName: user?.displayName, vendorEmail: user?.email, onAdd: false, status: 'pending' }
 
-            axiosInstance.post('/tickets', data)
+            axiosSecure.post('/tickets', data)
                 .then(response => {
                     if (response.status == 200) {
                         form.reset();

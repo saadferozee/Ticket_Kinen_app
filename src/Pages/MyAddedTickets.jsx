@@ -7,41 +7,13 @@ import useAxios from '../Hooks/useAxios';
 import { useEffect } from 'react';
 import Loading from '../Components/Loading';
 import { Link } from 'react-router';
+import VendorTicketCard from '../Components/VendorTicketCard';
 
 const MyAddedTickets = () => {
     const { user } = useContext(AuthContext);
     const axiosInstance = useAxios();
     const [loading, setLoading] = useState(true);
     const [myTickets, setMyTickets] = useState([]);
-
-    const handleDelete = id => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            // if (result.isConfirmed) {
-            //     axiosInstance.delete(`https://adoptyco.vercel.app/listings/delete/${id}`)
-            //         .then(response => {
-            //             if (response.data.deletedCount == 1) {
-            //                 const filteredListings = myListings.filter(product => product?._id !== id);
-            //                 setMyListings(filteredListings);
-            //                 Swal.fire({
-            //                     title: "Deleted!",
-            //                     text: "Your product has been deleted.",
-            //                     icon: "success"
-            //                 });
-            //             }
-            //         })
-
-            //}
-        });
-
-    }
 
     useEffect(() => {
         axiosInstance.get(`tickets/my-tickets/${user?.email}`)
@@ -52,7 +24,17 @@ const MyAddedTickets = () => {
     }, [user, axiosInstance]);
 
     return (
-       ''
+        <div>
+            {
+                loading ? <Loading viewHeight="70" color={'#D9C296'}></Loading> : (
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
+                        {
+                            myTickets.map(ticket => <VendorTicketCard ticket={ticket}></VendorTicketCard>)
+                        }
+                    </div>
+                )
+            }
+        </div>
     );
 };
 

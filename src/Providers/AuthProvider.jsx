@@ -1,3 +1,5 @@
+// AuthProvider:57, this error is not an error, its a warning from React18, don't worry.
+
 import React, { useEffect, useState } from 'react';
 import AuthContext from '../Contexts/AuthContext';
 import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut, onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth';
@@ -52,7 +54,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         if (authLoading) return;
         if (!user) {
-            setRole(null)
+            setRole(null) // its a warning, not an error.
             setRoleLoading(false)
             return
         }
