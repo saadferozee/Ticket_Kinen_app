@@ -18,6 +18,7 @@ import RequestedBookings from "../Pages/RequestedBookings";
 import RevenueOverview from "../Pages/RevenueOverview";
 import MyBookedTickets from "../Pages/MyBookedTickets";
 import TransactionHistory from "../Pages/TransactionHistory";
+import TicketDetails from "../Pages/TicketDetails";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
         children: [
             { index: true, element: <Home /> },
             { path: '/all-tickets', element: <PrivateRoute authorization={'all-user'}><AllTickets></AllTickets></PrivateRoute> },
+            { path: '/ticket/:id', element: <PrivateRoute authorization={'all-user'}><TicketDetails></TicketDetails></PrivateRoute> },
             { path: '/login', element: <Login /> },
             { path: '/forget-pass/:email', element: <ForgetPass /> },
             { path: '/register', element: <Register /> }
