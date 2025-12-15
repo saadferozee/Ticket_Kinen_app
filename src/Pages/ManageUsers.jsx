@@ -8,6 +8,7 @@ import useAxiosSecure from '../Hooks/useAxiosSecure';
 import { FaUser, FaUserCog, FaUserEdit } from 'react-icons/fa';
 import { MdOutlineBlock, MdOutlineGppGood } from 'react-icons/md';
 import { TiWarningOutline } from 'react-icons/ti';
+import Swal from 'sweetalert2';
 
 const ManageUsers = () => {
 
@@ -16,20 +17,42 @@ const ManageUsers = () => {
     const [loading, setLoading] = useState(true);
     const [users, setUsers] = useState([]);
 
-    const handleSetRole = (email, role) => {
-        console.log(email, role)
-    }
-    const handleMarkFraud = (email, status) => {
-        console.log(email, status)
-    }
 
-    useEffect(() => {
+    const fetchUsers = () => {
         axiosSecure.get(`users`)
             .then(response => {
                 setUsers(response.data);
                 setLoading(false);
             })
-    }, [loggedInUser, axiosSecure]);
+    }
+    const handleSetRole = (email, role) => {
+        axiosSecure.patch(`/users/update-role?email=${email}&role=${role}`)
+            .then(res => {
+                Swal.fire({
+                    title: "Changed!!",
+                    text: `User Role Changed Successfully.`,
+                    icon: "success"
+                });
+                res.data.modifiedCount && fetchUsers();
+            })
+            .catch(err => console.log(err))
+        }
+        const handleMarkFraud = (email, status) => {
+            axiosSecure.patch(`/users/update-status?email=${email}&status=${status}`)
+            .then(res => {
+                Swal.fire({
+                    title: "Changed!!",
+                    text: `User Status Changed Successfully.`,
+                    icon: "success"
+                });
+                res.data.modifiedCount && fetchUsers();
+            })
+            .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        fetchUsers();
+    }, [loggedInUser]); // This is not an error, but a warning
 
     return (
         <div className='max-w-[1200px] min-h-[65vh] mx-auto pt-[50px]'>
