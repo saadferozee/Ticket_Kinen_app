@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
     const axiosInstance = useAxios();
     const [user, setUser] = useState(null);
     const [role, setRole] = useState(null);
+    const [userStatus, setUserStatus] = useState(null);
     const [authLoading, setAuthLoading] = useState(true);
     const [roleLoading, setRoleLoading] = useState(true);
 
@@ -59,9 +60,10 @@ const AuthProvider = ({ children }) => {
             return
         }
         setRoleLoading(true)
-        axiosInstance.get(`/users/role/${user?.email}`)
+        axiosInstance.get(`/users/info/${user?.email}`)
             .then(response => {
-                setRole(response.data === import.meta.env.VITE_ADMIN_ROLE ? 'admin' : response.data === import.meta.env.VITE_VENDOR_ROLE ? 'vendor' : 'user');
+                setRole(response.data.role === import.meta.env.VITE_ADMIN_ROLE ? 'admin' : response.data.role === import.meta.env.VITE_VENDOR_ROLE ? 'vendor' : 'user');
+                setUserStatus(response.data.status);
             }).catch(error => console.log(error))
             .finally(() => setRoleLoading(false));
     }, [user, authLoading, axiosInstance])
@@ -69,6 +71,7 @@ const AuthProvider = ({ children }) => {
 const contexts = {
     user,
     role,
+    userStatus,
     authLoading,
     roleLoading,
     setUser,

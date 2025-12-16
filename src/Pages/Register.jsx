@@ -71,7 +71,7 @@ const Register = () => {
                             navigate(location.state ? location.state : '/');
                         })
                         .catch(error => console.log(error));
-                    const user = { name, phone, email, password: { loginType: 'email-password', password: password }, photoURL };
+                    const user = { name, phone, email, password: { loginType: 'email-password', password: password }, photoURL, status: 'normal' };
                     userDataSaveToDB(user);
                     Swal.fire({
                         title: "User Registration Successful.",
