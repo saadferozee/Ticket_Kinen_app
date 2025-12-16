@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import useAxios from '../Hooks/useAxios';
 import { useState } from 'react';
 import TicketCard from '../Components/TicketCard';
+import isTimeUp from '../Functions/IsTimeUp';
 
 const AllTickets = () => {
 
@@ -26,11 +27,17 @@ const AllTickets = () => {
                 </span>
             </h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                {
-                    tickets.map(ticket => (
-                        <TicketCard ticket={ticket}></TicketCard>
-                    ))
-                }
+            {
+                tickets.map(ticket => {
+                    if (isTimeUp(ticket?.date, ticket?.time)) {
+                        return;
+                    } else {
+                        return (
+                            <TicketCard key={ticket.id ?? ticket._id ?? ticket.title} ticket={ticket} />
+                        );
+                    }
+                })
+            }
             </div>
         </div>
     );

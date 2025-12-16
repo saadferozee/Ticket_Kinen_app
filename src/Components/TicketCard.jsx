@@ -34,6 +34,7 @@ const TicketCard = ({ ticket }) => {
                     <div className='w-full text-left'>
                         <h2 className="font-light text-xs title">{ticket?.title}</h2>
                         <h3 className="card-title font-bold flex items-baseline"><span className='text-xs font-light'>From</span> <span>{ticket?.from}</span> <span className='text-xs font-light'>to</span> <span>{ticket?.to}</span></h3>
+                        <h3 className="card-title font-semibold text-md flex items-baseline"><span className='text-xs font-light'>Time :</span> <span className='font-mono font-medium'>{ticket?.time}</span> <span className='text-xs font-light'>Date :</span> <span className='font-mono font-medium'>{ticket?.date}</span></h3>
                     </div>
                     <div className='w-full flex grow gap-3'>
                         {ticket?.breakfast && <h4 className='flex items-center gap-1 font-light text-[12px]'><IoFastFoodOutline className='text-[15px] text-yellow-600' /> Breakfast</h4>}
@@ -42,22 +43,26 @@ const TicketCard = ({ ticket }) => {
                         {ticket?.security && <h4 className='flex items-center gap-1 font-light text-[12px]'><GiPoliceOfficerHead className='text-[15px] text-yellow-600' /> VIP Security</h4>}
                     </div>
                     <div className='w-full flex justify-between'>
-                        <h5 className=""><span className='flex items-baseline'>
-                            <span className='text-[12px]'>Price : &nbsp;</span>
-                            <span className='flex items-center'>
-                                <span className='font-bold'>{ticket?.price}</span>
-                                {/* &nbsp; */}
-                                <TbCoinTaka className='mb-2 ml-0.5 text-[16px] ' />
+                        <h5 className="">
+                            <span className='flex items-baseline'>
+                                <span className='text-[12px]'>Price : &nbsp;</span>
+                                <span className='flex items-center'>
+                                    <span className='font-bold'>{ticket?.price}</span>
+                                    {/* &nbsp; */}
+                                    <TbCoinTaka className='mb-2 ml-0.5 text-[16px] ' />
+                                </span>
                             </span>
-                        </span></h5>
-                        <h5 className=""><span className='flex items-baseline'>
-                            <span className='text-[12px]'>Sits Available : &nbsp;</span>
-                            <span className='flex items-center'>
-                                <span className='font-bold'>{ticket?.availableSits}</span>
-                                {/* &nbsp; */}
-                                {/* <TbCoinTaka className='mb-2 ml-0.5 text-[16px] ' /> */}
+                        </h5>
+                        <h5 className="">
+                            <span className='flex items-baseline'>
+                                <span className='text-[12px]'>Sits Available : &nbsp;</span>
+                                <span className='flex items-center'>
+                                    <span className='font-bold'>{ticket?.availableSits}</span>
+                                    {/* &nbsp; */}
+                                    {/* <TbCoinTaka className='mb-2 ml-0.5 text-[16px] ' /> */}
+                                </span>
                             </span>
-                        </span></h5>
+                        </h5>
                     </div>
                     {/* <p>A card component has a figure, a body part, and inside body there are title and actions parts</p> */}
                     <div className="w-full flex">

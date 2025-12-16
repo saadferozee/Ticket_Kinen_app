@@ -20,7 +20,6 @@ const ManageTickets = () => {
             })
     }
     const handleTicketStatus = (id, status) => {
-        console.log(id, status)
         axiosSecure.patch(`/tickets/update/status?id=${id}&status=${status}`)
             .then(res => {
                 Swal.fire({
@@ -35,6 +34,7 @@ const ManageTickets = () => {
 
     useEffect(() => {
         fetchTickets()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []); // It's not an error, it's an warning.
 
     return (
