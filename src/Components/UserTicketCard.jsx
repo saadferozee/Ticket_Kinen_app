@@ -78,16 +78,16 @@ const UserTicketCard = ({ ticket }) => {
                     {/* <p>A card component has a figure, a body part, and inside body there are title and actions parts</p> */}
                     <div className="w-full flex gap-3">
                         {
-                            ticket?.bookingStatus === 'accepted' ? (
+                            ticket?.bookingStatus === 'approved' ? (
                                 ticket?.payment === 'pending' ? (
-                                    <button className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-light text-[#0A2F23] disabled:opacity-65 cursor-pointer">Pay Now</button>
+                                    <button className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-normal text-[#0A2F23] disabled:opacity-85 cursor-pointer">Pay Now</button>
                                 ) : ticket?.payment === 'paid' && (
-                                    <button disabled className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-light text-[#0A2F23] disabled:opacity-65 cursor-pointer">Already Paid</button>
+                                    <button disabled className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-normal text-[#0A2F23] disabled:opacity-85 cursor-pointer">Already Paid</button>
                                 )
                             ) : ticket?.bookingStatus === 'pending' ? (
-                                <button className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-light text-red-500 disabled:opacity-65 cursor-pointer">Cancel</button>
+                                <button className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-normal text-red-500 disabled:opacity-85 cursor-pointer">Cancel</button>
                             ) : (
-                                <button className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-light text-red-500 disabled:opacity-65 cursor-pointer">Cancel</button>
+                                <button className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-normal text-red-500 disabled:opacity-85 cursor-pointer">Cancel</button>
                             )
                         }
                     </div>
