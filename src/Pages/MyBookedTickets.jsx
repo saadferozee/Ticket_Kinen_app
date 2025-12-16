@@ -31,7 +31,7 @@ const MyBookedTickets = () => {
                     <div>
                         <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
                             {
-                                myBookings.map(ticket => <UserTicketCard key={ticket?._id} ticket={ticket}></UserTicketCard>)
+                                myBookings.map(ticket => <UserTicketCard key={ticket?._id} ticket={ticket} myBookings={myBookings} setMyBookings={setMyBookings}></UserTicketCard>)
                             }
                         </div>
                     </div>

@@ -5,8 +5,26 @@ import { IoFastFoodOutline } from 'react-icons/io5';
 import { TbBottle, TbCircleCheck, TbClockExclamation, TbCoinTaka, TbXboxX } from 'react-icons/tb';
 import { BsCreditCard } from "react-icons/bs";
 import CountdownTimer from './CountdownTimer';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
-const UserTicketCard = ({ ticket }) => {
+const UserTicketCard = ({ ticket, myBookings, setMyBookings }) => {
+
+    const axiosSecure = useAxiosSecure();
+
+    const handleCancelBooking = id => {
+        const updateBookings = myBookings.filter(booking => booking._id !== id);
+        axiosSecure.delete(`/bookings/delete/${id}`)
+            .then(res => {
+                Swal.fire({
+                    title: "Deleted!!",
+                    text: `Booking Deleted Successfully.`,
+                    icon: "success"
+                });
+                setMyBookings(updateBookings);
+            })
+    }
+
     return (
         <div>
             <div className="card bg-[#0A2F23] border-2 border-[#D9C296c0] text-[#D9C296] shadow-sm">
@@ -80,14 +98,14 @@ const UserTicketCard = ({ ticket }) => {
                         {
                             ticket?.bookingStatus === 'approved' ? (
                                 ticket?.payment === 'pending' ? (
-                                    <button className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-normal text-[#0A2F23] disabled:opacity-85 cursor-pointer">Pay Now</button>
+                                    <button className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full font-normal text-[#0A2F23] disabled:opacity-85 disabled:cursor-not-allowed cursor-pointer">Pay Now</button>
                                 ) : ticket?.payment === 'paid' && (
                                     <button disabled className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-normal text-[#0A2F23] disabled:opacity-85 cursor-pointer">Already Paid</button>
                                 )
                             ) : ticket?.bookingStatus === 'pending' ? (
-                                <button className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-normal text-red-500 disabled:opacity-85 cursor-pointer">Cancel</button>
-                            ) : (
-                                <button className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-normal text-red-500 disabled:opacity-85 cursor-pointer">Cancel</button>
+                                <button onClick={() => handleCancelBooking(ticket?._id)} className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-normal text-red-500 disabled:opacity-85 cursor-pointer">Cancel</button>
+                            ) : ticket?.bookingStatus === 'rejected' && (
+                                <button disabled className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-normal text-red-500 disabled:opacity-85 cursor-pointer">Rejected</button>
                             )
                         }
                     </div>
