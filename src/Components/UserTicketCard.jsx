@@ -1,14 +1,15 @@
 import React from 'react';
 import { FaBusSimple, FaHelicopter, FaPlane, FaShip } from 'react-icons/fa6';
-import { TbBottle, TbCircleCheck, TbClockExclamation, TbCoinTaka, TbXboxX } from 'react-icons/tb';
-import { GiHotMeal, GiPoliceOfficerHead } from "react-icons/gi";
+import { GiHotMeal, GiPoliceOfficerHead } from 'react-icons/gi';
 import { IoFastFoodOutline } from 'react-icons/io5';
+import { TbBottle, TbCircleCheck, TbClockExclamation, TbCoinTaka, TbXboxX } from 'react-icons/tb';
+import { BsCreditCard } from "react-icons/bs";
+import CountdownTimer from './CountdownTimer';
 
-const VendorTicketCard = ({ ticket }) => {
-
+const UserTicketCard = ({ ticket }) => {
     return (
         <div>
-            <div className="card bg-[#0A2F23] text-[#D9C296] shadow-sm">
+            <div className="card bg-[#0A2F23] border-2 border-[#D9C296c0] text-[#D9C296] shadow-sm">
                 <figure className="px-4 pt-4">
                     <img
                         src={ticket?.photoURL}
@@ -19,11 +20,11 @@ const VendorTicketCard = ({ ticket }) => {
                     <div className='w-full flex justify-between'>
                         <h3 className='border rounded-full py-0.5 pl-1 pr-2'>
                             {
-                                ticket?.status === 'pending' ? (
+                                ticket?.bookingStatus === 'pending' ? (
                                     <span className='flex items-center gap-1 font-light text-[12px]'><TbClockExclamation className='text-[16px] text-yellow-600' /> Pending</span>
-                                ) : ticket?.status === 'approved' ? (
+                                ) : ticket?.bookingStatus === 'approved' ? (
                                     <span className='flex items-center gap-1 font-light text-[12px]'><TbCircleCheck className='text-[16px] text-green-500' /> Approved</span>
-                                ) : ticket?.status === 'rejected' && (
+                                ) : ticket?.bookingStatus === 'rejected' && (
                                     <span className='flex items-center gap-1 font-light text-[12px]'><TbXboxX className='text-[16px] text-red-500' /> Rejected</span>
                                 )
                             }
@@ -47,34 +48,48 @@ const VendorTicketCard = ({ ticket }) => {
                         <h3 className="card-title font-bold flex items-baseline"><span className='text-xs font-light'>From</span> <span>{ticket?.from}</span> <span className='text-xs font-light'>to</span> <span>{ticket?.to}</span></h3>
                         <h3 className="card-title font-semibold font-mono flex items-baseline"><span className='text-xs font-light'>Time:</span> <span>{ticket?.time}</span> <span className='text-xs font-light'>Date:</span> <span>{ticket?.date}</span></h3>
                     </div>
-                    <div className='w-full flex grow gap-3'>
-                        {ticket?.breakfast && <h4 className='flex items-center gap-1 font-light text-[12px]'><IoFastFoodOutline className='text-[15px] text-yellow-600' /> Breakfast</h4>}
-                        {ticket?.meal && <h4 className='flex items-center gap-1 font-light text-[12px]'><GiHotMeal className='text-[15px] text-yellow-600' /> Lunch</h4>}
-                        {ticket?.water && <h4 className='flex items-center gap-1 font-light text-[12px]'><TbBottle className='text-[15px] text-yellow-600' /> Water</h4>}
-                        {ticket?.security && <h4 className='flex items-center gap-1 font-light text-[12px]'><GiPoliceOfficerHead className='text-[15px] text-yellow-600' /> VIP Security</h4>}
-                    </div>
-                    <div className='w-full text-lg flex justify-between'>
+                    <div className='w-full flex text-lg justify-between'>
                         <h5 className=""><span className='flex items-baseline'>
-                            <span className='text-[12px]'>Price : &nbsp;</span>
+                            <span className='text-[12px]'>Total Price : &nbsp;</span>
                             <span className='flex items-center'>
-                                <span className='font-bold'>{ticket?.price}</span>
+                                <span className='font-bold'>{ticket?.totalPrice}</span>
                                 {/* &nbsp; */}
                                 <TbCoinTaka className='mb-2 ml-0.5 text-[16px] ' />
                             </span>
                         </span></h5>
                         <h5 className=""><span className='flex items-baseline'>
-                            <span className='text-[12px]'>Sits Available : &nbsp;</span>
+                            <span className='text-[12px]'>Seats Quantity : &nbsp;</span>
                             <span className='flex items-center'>
-                                <span className='font-bold'>{ticket?.availableSits}</span>
+                                <span className='font-bold'>{ticket?.bookingQuantity}</span>
                                 {/* &nbsp; */}
                                 {/* <TbCoinTaka className='mb-2 ml-0.5 text-[16px] ' /> */}
                             </span>
                         </span></h5>
                     </div>
+                    {
+                        ticket?.bookingStatus === 'rejected' || (
+                            <div className='w-full flex flex-col space-y-0.5'>
+                                <hr />
+                                <CountdownTimer targetDateTime={`${ticket?.date}T${ticket?.time}`}></CountdownTimer>
+                                <hr />
+                            </div>
+                        )
+                    }
                     {/* <p>A card component has a figure, a body part, and inside body there are title and actions parts</p> */}
                     <div className="w-full flex gap-3">
-                        <button disabled={ticket?.status === 'rejected'} className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-light text-[#0A2F23] disabled:opacity-65 cursor-pointer">Update</button>
-                        <button disabled={ticket?.status === 'rejected'} className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-light text-red-500 disabled:opacity-65 cursor-pointer">Delete</button>
+                        {
+                            ticket?.bookingStatus === 'accepted' ? (
+                                ticket?.payment === 'pending' ? (
+                                    <button className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-light text-[#0A2F23] disabled:opacity-65 cursor-pointer">Pay Now</button>
+                                ) : ticket?.payment === 'paid' && (
+                                    <button disabled className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-light text-[#0A2F23] disabled:opacity-65 cursor-pointer">Already Paid</button>
+                                )
+                            ) : ticket?.bookingStatus === 'pending' ? (
+                                <button className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-light text-red-500 disabled:opacity-65 cursor-pointer">Cancel</button>
+                            ) : (
+                                <button className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-light text-red-500 disabled:opacity-65 cursor-pointer">Cancel</button>
+                            )
+                        }
                     </div>
                 </div>
             </div>
@@ -82,4 +97,4 @@ const VendorTicketCard = ({ ticket }) => {
     );
 };
 
-export default VendorTicketCard;
+export default UserTicketCard;

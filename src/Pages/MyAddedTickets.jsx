@@ -20,17 +20,19 @@ const MyAddedTickets = () => {
                 setMyTickets(response.data);
                 setLoading(false);
             })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
 
     return (
         <div className='max-w-[1200px] mx-auto'>
             {
                 loading ? <Loading viewHeight="70" color={'#D9C296'}></Loading> : (
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
-                        {
-                            myTickets.map(ticket => <VendorTicketCard ticket={ticket}></VendorTicketCard>)
-                        }
+                    <div>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
+                            {
+                                myTickets.map(ticket => <VendorTicketCard key={ticket?._id} ticket={ticket}></VendorTicketCard>)
+                            }
+                        </div>
                     </div>
                 )
             }
