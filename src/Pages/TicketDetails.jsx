@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
-import { Link, useNavigate, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { TbBottle, TbCoinTaka } from 'react-icons/tb';
 import Loading from '../Components/Loading';
 import { FaBusSimple, FaHelicopter, FaPlane, FaShip } from 'react-icons/fa6';
@@ -9,16 +9,127 @@ import CountdownTimer from '../Components/CountdownTimer';
 import { IoFastFoodOutline } from 'react-icons/io5';
 import { GiHotMeal, GiPoliceOfficerHead } from 'react-icons/gi';
 import isTimeUp from '../Functions/IsTimeUp';
+import Swal from 'sweetalert2';
+import { useContext } from 'react';
+import AuthContext from '../Contexts/AuthContext';
 
 const TicketDetails = () => {
 
     const { id } = useParams()
+    const { user } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
-    const navigate = useNavigate();
     const [ticket, setTicket] = useState([]);
-    // const [timeUp, setTimeUp] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const handleBookNowButton = () => {
+        const availableSit = ticket?.availableSits;
+
+        Swal.fire({
+            title: "<strong class='text-xl font-bold text-[#D9C296]'>Ticket Booking Form</strong>",
+            html: `
+                <form id="bookingForm" class="w-full px-2">
+                <fieldset class="w-full bg-[#0A2F23] border-2 border-[#D9C296c0] shadow-2xl rounded-3xl p-6 space-y-4">
+
+                    <input 
+                        type="number" 
+                        id="quantity" 
+                        name="quantity" 
+                        class="px-6 w-full border border-[#D9C296] rounded-full py-2" 
+                        placeholder="Enter Quantity" 
+                        required
+                    />
+
+                    <input 
+                        type="text" 
+                        id="info" 
+                        readonly 
+                        class="px-6 w-full border border-[#D9C296] rounded-full py-2 bg-[#0A2F23] text-[#D9C296]"
+                    />
+
+                </fieldset>
+                </form>
+            `,
+            showCancelButton: true,
+            confirmButtonText: "Confirm Booking",
+            cancelButtonText: "Cancel",
+
+            customClass: {
+                confirmButton: "custom-confirm-btn",
+                cancelButton: "custom-cancel-btn",
+                popup: "custom-swal-popup"
+            },
+
+            didOpen: () => {
+                const qtyInput = document.getElementById("quantity");
+                const infoInput = document.getElementById("info");
+
+                // প্রথমে info তে available seat দেখাও
+                infoInput.value = 'Available Seats :' + availableSit;
+
+                qtyInput.addEventListener("input", () => {
+                    let qty = parseInt(qtyInput.value) || 0;
+
+                    // যদি quantity availableSit এর বেশি হয়
+                    if (qty > availableSit) {
+                        qtyInput.value = availableSit; // input কে limit করে দাও
+                        qty = availableSit;
+                    }
+
+                    infoInput.value = "Total Price: " + (ticket.price * qty) + " BDT";
+                });
+            },
+            preConfirm: () => {
+                const qty = parseInt(document.getElementById("quantity").value);
+
+                if (!qty || qty < 1) {
+                    Swal.showValidationMessage("Please enter a valid quantity");
+                    return false;
+                }
+
+                return { quantity: qty };
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const quantity = result.value.quantity;
+                const bookingData = {
+                    userEmail: user?.email,
+                    userName: user?.displayName,
+                    ticketId: ticket?._id,
+                    title: ticket?.title,
+                    category: ticket?.category,
+                    bookingStatus: 'pending',
+                    vendorName: ticket?.vendorName,
+                    vendorEmail: ticket?.vendorEmail,
+                    from: ticket?.from,
+                    to: ticket?.to,
+                    date: ticket?.date,
+                    time: ticket?.time,
+                    bookingQuantity: quantity,
+                    totalPrice: ticket?.price * quantity,
+                    photoURL: ticket?.photoURL,
+                }
+                // Sending data to server.
+                axiosSecure.post('/bookings', bookingData)
+                    .then(response => {
+                        if (response.status == 200) {
+                            // sweet alert
+                            Swal.fire({
+                                title: "Booked!!",
+                                text: `Ticket Booked Successfully, Now Wait for Vendors's Confirmation.`,
+                                icon: "success"
+                            });
+                        };
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            title: "Something went wrong!!",
+                            text: `Ticket Booking Failed, Try Again. Error: ${error.message}`,
+                            icon: "error"
+                        });
+                    })
+            }
+        });
+    }
 
     useEffect(() => {
         axiosSecure.get(`/tickets/ticket/${id}`)
@@ -99,7 +210,7 @@ const TicketDetails = () => {
                                         <CountdownTimer targetDateTime={`${ticket.date}T${ticket.time}`} />
                                     </div>
                                     <button
-                                        onClick={() => navigate(`/add-order/${ticket?._id}`)}
+                                        onClick={() => handleBookNowButton()}
                                         disabled={isTimeUp(ticket?.date, ticket?.time) || ticket?.availableSits < 1}
                                         className='mt-4 px-8 pt-1.5 pb-1.75 border-2 border-[#D9C29690] rounded-full bg-[#0A2F23] hover:bg-[#0A2F2390] text-center text-[#D9C296] title cursor-pointer disabled:cursor-not-allowed'
                                     >

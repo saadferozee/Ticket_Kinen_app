@@ -14,3 +14,50 @@
 .title {
     font-stretch: 150%;
 }
+
+.custom-swal-popup {
+    background-color: #0A2F23 !important;
+    border: 3px solid #D9C296 !important;
+    border-radius: 24px !important;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5) !important;
+    padding: 20px !important;
+}
+/* Confirm Button (Update Product / Pet Details) */
+.custom-confirm-btn {
+    /* width: 80% !important; */
+    /* lg:w-[80%] */
+    margin-top: 8px !important;
+    /* mt-2 */
+    background-color: #F7F3E9 !important;
+    color: #556B2F !important;
+    border-radius: 9999px !important;
+    /* rounded-full */
+    padding: 10px 20px !important;
+    border: none !important;
+    font-weight: 600 !important;
+    transition: 0.2s ease-in-out !important;
+}
+
+.custom-confirm-btn:hover {
+    background-color: #F7F3E9c0 !important;
+    /* hover:bg-[#F7F3E9c0] */
+}
+
+/* Cancel Button */
+.custom-cancel-btn {
+    /* width: 18% !important; */
+    /* lg:w-[18%] */
+    margin-top: 8px !important;
+    background-color: #F7F3E999 !important;
+    color: #556B2F !important;
+    border-radius: 9999px !important;
+    padding: 10px 20px !important;
+    border: none !important;
+    font-weight: 600 !important;
+    transition: 0.2s ease-in-out !important;
+}
+
+.custom-cancel-btn:hover {
+    background-color: #F7F3E985 !important;
+    /* hover:bg-[#F7F3E985] */
+}
