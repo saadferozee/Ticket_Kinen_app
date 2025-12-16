@@ -106,6 +106,7 @@ const TicketDetails = () => {
                     time: ticket?.time,
                     bookingQuantity: quantity,
                     totalPrice: ticket?.price * quantity,
+                    payment: 'pending',
                     photoURL: ticket?.photoURL,
                 }
                 // Sending data to server.
