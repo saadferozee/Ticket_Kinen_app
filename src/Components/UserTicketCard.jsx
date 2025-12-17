@@ -29,7 +29,7 @@ const UserTicketCard = ({ ticket, myBookings, setMyBookings }) => {
 
     return (
         <div>
-            <div className="card bg-[#0A2F23] border-2 border-[#D9C296c0] text-[#D9C296] shadow-sm">
+            <div className="h-full flex flex-col justify-between rounded-3xl bg-[#0A2F23] border-2 border-[#D9C296c0] text-[#D9C296] shadow-sm">
                 <figure className="px-4 pt-4">
                     <img
                         src={ticket?.photoURL}
@@ -86,15 +86,11 @@ const UserTicketCard = ({ ticket, myBookings, setMyBookings }) => {
                             </span>
                         </span></h5>
                     </div>
-                    {
-                        ticket?.bookingStatus === 'rejected' || (
-                            <div className='w-full flex flex-col space-y-0.5'>
-                                <hr />
-                                <CountdownTimer targetDateTime={`${ticket?.date}T${ticket?.time}`}></CountdownTimer>
-                                <hr />
-                            </div>
-                        )
-                    }
+                    <div className='w-full flex flex-col space-y-0.5'>
+                        <hr />
+                        <CountdownTimer targetDateTime={ticket?.bookingStatus === 'rejected' ? '' : `${ticket?.date}T${ticket?.time}`}></CountdownTimer>
+                        <hr />
+                    </div>
                     {/* <p>A card component has a figure, a body part, and inside body there are title and actions parts</p> */}
                     <div className="w-full flex gap-3">
                         {
