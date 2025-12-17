@@ -14,12 +14,15 @@ const MyAddedTickets = () => {
     const [loading, setLoading] = useState(true);
     const [myTickets, setMyTickets] = useState([]);
 
-    useEffect(() => {
+    const fetchMyTickets = () => {
         axiosSecure.get(`tickets/my-tickets/${user?.email}`)
             .then(response => {
                 setMyTickets(response.data);
                 setLoading(false);
             })
+    }
+    useEffect(() => {
+        fetchMyTickets();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
 
@@ -30,7 +33,7 @@ const MyAddedTickets = () => {
                     <div>
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
                             {
-                                myTickets.map(ticket => <VendorTicketCard key={ticket?._id} ticket={ticket}></VendorTicketCard>)
+                                myTickets.map(ticket => <VendorTicketCard key={ticket?._id} ticket={ticket} fetchMyTickets={fetchMyTickets}></VendorTicketCard>)
                             }
                         </div>
                     </div>
