@@ -25,7 +25,7 @@ const MyBookedTickets = () => {
     }, [user, axiosSecure])
 
     return (
-        <div className='max-w-[1200px] mx-auto'>
+        <div className='max-w-300 mx-auto'>
             {
                 loading ? <Loading viewHeight="70" color={'#D9C296'}></Loading> : (
                     <div>

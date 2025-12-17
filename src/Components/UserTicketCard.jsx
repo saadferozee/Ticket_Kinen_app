@@ -16,12 +16,15 @@ const UserTicketCard = ({ ticket, myBookings, setMyBookings }) => {
         const updateBookings = myBookings.filter(booking => booking._id !== id);
         axiosSecure.delete(`/bookings/delete/${id}`)
             .then(res => {
-                Swal.fire({
-                    title: "Deleted!!",
-                    text: `Booking Deleted Successfully.`,
-                    icon: "success"
-                });
-                setMyBookings(updateBookings);
+                console.log(res);
+                if (res.data.deletedCount) {
+                    Swal.fire({
+                        title: "Deleted!!",
+                        text: `Booking Deleted Successfully.`,
+                        icon: "success"
+                    });
+                    setMyBookings(updateBookings);
+                }
             })
     }
 
@@ -32,7 +35,7 @@ const UserTicketCard = ({ ticket, myBookings, setMyBookings }) => {
                     <img
                         src={ticket?.photoURL}
                         alt="Shoes"
-                        className="rounded-xl w-full h-[200px] object-cover" />
+                        className="rounded-xl w-full h-50 object-cover" />
                 </figure>
                 <div className="card-body items-center text-center">
                     <div className='w-full flex justify-between'>

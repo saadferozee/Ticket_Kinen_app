@@ -127,8 +127,8 @@ const Register = () => {
     return (
         <div>
             <title>Ticket Kinen | Register</title>
-            <div className='w-full py-[200px]'>
-                <div className='max-w-[500px] mx-auto'>
+            <div className='w-full py-12.5'>
+                <div className='max-w-125 mx-auto'>
                     <form onSubmit={handleRegister} className='w-full px-2'>
                         <fieldset className="fieldset w-full bg-[#0A2F23] border-2 border-[#D9C296] shadow-2xl shadow-[#00000070] rounded-3xl p-6 sm:p-10">
                             <h2 className='pl-2 text-2xl text-[#D9C296]'>Register</h2>

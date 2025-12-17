@@ -47,7 +47,7 @@ const Navbar = () => {
     return (
         <div className='sticky top-0 z-50'>
             <div className="bg-[#0A2F23] shadow-lg shadow-[#00000040]">
-                <div className='navbar max-w-[1200px] mx-auto'>
+                <div className='navbar max-w-300 mx-auto'>
                     <div className="navbar-start">
                         <ReactTooltip id={'nav'} content={'Click to Open Menu'} place={'bottom-start'}>
                             <div className="dropdown">

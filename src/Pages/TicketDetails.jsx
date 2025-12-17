@@ -63,15 +63,15 @@ const TicketDetails = () => {
                 const qtyInput = document.getElementById("quantity");
                 const infoInput = document.getElementById("info");
 
-                // প্রথমে info তে available seat দেখাও
+                // show available seats
                 infoInput.value = 'Available Seats :' + availableSit;
 
                 qtyInput.addEventListener("input", () => {
                     let qty = parseInt(qtyInput.value) || 0;
 
-                    // যদি quantity availableSit এর বেশি হয়
+                    // if quantity is greater than available seats
                     if (qty > availableSit) {
-                        qtyInput.value = availableSit; // input কে limit করে দাও
+                        qtyInput.value = availableSit; // limit the input
                         qty = availableSit;
                     }
 
@@ -142,10 +142,10 @@ const TicketDetails = () => {
     }, [id])
 
     return (
-        <div className='max-w-[1200px] mx-auto'>
+        <div className='max-w-300 mx-auto'>
             <title>Ticket Kinen | Ticket Details</title>
             <div className=' min-h-[70vh] flex flex-col items-center'>
-                <div className='mx-[3%] lg:min-w-[700px] my-8 lg:my-auto p-[2%] border-2 border-[#D9C29695] rounded-4xl bg-[#0A2F23] text-[#D9C296] flex flex-col lg:flex-row gap-10'>
+                <div className='mx-[3%] lg:min-w-175 my-8 lg:my-auto p-[2%] border-2 border-[#D9C29695] rounded-4xl bg-[#0A2F23] text-[#D9C296] flex flex-col lg:flex-row gap-10'>
                     {
                         loading ? <Loading viewHeight={40} color={'#556B2F'}></Loading> : (
                             <>

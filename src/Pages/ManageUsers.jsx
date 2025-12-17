@@ -55,7 +55,7 @@ const ManageUsers = () => {
     }, [loggedInUser]); // This is not an error, but a warning
 
     return (
-        <div className='max-w-[1200px] min-h-[65vh] mx-auto pt-[50px]'>
+        <div className='max-w-300 min-h-[65vh] mx-auto pt-[50px]'>
             <h1 className="mb-3 ml-2 lg:ml-0 flex items-center gap-3 text-2xl lg:text-4xl font-semibold text-[#0A2F23]">
                 <span className="w-3 h-10 bg-[#0A2F23] rounded-full"></span>
                 <span className="px-8 py-2 bg-[#D9C296e5] border-4 border-[#0A2F23] rounded-full shadow flex flex-col">

@@ -13,7 +13,7 @@ const TicketCard = ({ ticket }) => {
                     <img
                         src={ticket?.photoURL}
                         alt="Shoes"
-                        className="rounded-xl w-full h-[200px] object-cover" />
+                        className="rounded-xl w-full h-50 object-cover" />
                 </figure>
                 <div className="card-body items-center text-center">
                     <div className='w-full flex justify-end'>

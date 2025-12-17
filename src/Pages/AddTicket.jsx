@@ -64,7 +64,7 @@ const AddTicket = () => {
         <div>
             <title>Ticket Kinen | Add Product</title>
             <div className='w-full py-[10%]'>
-                <div className='max-w-[700px] mx-auto'>
+                <div className='max-w-175 mx-auto'>
                     {
                         userStatus !== 'normal' ? (
                             <div className='w-full h-full flex items-center justify-center'>

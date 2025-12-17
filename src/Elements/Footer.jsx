@@ -11,7 +11,7 @@ import { LuDot } from "react-icons/lu";
 const Footer = () => {
     return (
         <div className='w-full bg-[#0A2F23] py-1'>
-            <footer className="footer max-w-[1200px] mx-auto sm:footer-horizontal bg-[#0A2F23] text-[#D9C296] p-10">
+            <footer className="footer max-w-300 mx-auto sm:footer-horizontal bg-[#0A2F23] text-[#D9C296] p-10">
                 <aside>
                     <h1><HiTicket className='mb-0 text-5xl rotate-325' /></h1>
                     <p>
