@@ -16,7 +16,6 @@ const UserTicketCard = ({ ticket, myBookings, setMyBookings }) => {
         const updateBookings = myBookings.filter(booking => booking._id !== id);
         axiosSecure.delete(`/bookings/delete/${id}`)
             .then(res => {
-                console.log(res);
                 if (res.data.deletedCount) {
                     Swal.fire({
                         title: "Deleted!!",
