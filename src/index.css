@@ -14,6 +14,19 @@
 .title {
     font-stretch: 150%;
 }
+.title-logo {
+    font-stretch: 350% !important;
+    /* background-image: url(../public/sky-scraper.png);
+    background-size: cover;
+    background-clip: text;
+    color: transparent;
+    animation: animate 20s linear infinite; */
+}
+/* @keyframes animate {
+    to {
+        background-position-x: -500px;
+    }
+} */
 
 .custom-swal-popup {
     background-color: #0A2F23 !important;

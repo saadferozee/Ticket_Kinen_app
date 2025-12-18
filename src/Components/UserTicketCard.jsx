@@ -69,22 +69,26 @@ const UserTicketCard = ({ ticket, myBookings, setMyBookings }) => {
                         <h3 className="card-title font-semibold font-mono flex items-baseline"><span className='text-xs font-light'>Time:</span> <span>{ticket?.time}</span> <span className='text-xs font-light'>Date:</span> <span>{ticket?.date}</span></h3>
                     </div>
                     <div className='w-full flex text-lg justify-between'>
-                        <h5 className=""><span className='flex items-baseline'>
-                            <span className='text-[12px]'>Total Price : &nbsp;</span>
-                            <span className='flex items-center'>
-                                <span className='font-bold'>{ticket?.totalPrice}</span>
-                                {/* &nbsp; */}
-                                <TbCoinTaka className='mb-2 ml-0.5 text-[16px] ' />
+                        <h5 className="">
+                            <span className='flex items-baseline'>
+                                <span className='text-[12px]'>Total Price : &nbsp;</span>
+                                <span className='flex items-center'>
+                                    <span className='font-bold'>{ticket?.totalPrice}</span>
+                                    {/* &nbsp; */}
+                                    <TbCoinTaka className='mb-2 ml-0.5 text-[16px] ' />
+                                </span>
                             </span>
-                        </span></h5>
-                        <h5 className=""><span className='flex items-baseline'>
-                            <span className='text-[12px]'>Seats Quantity : &nbsp;</span>
-                            <span className='flex items-center'>
-                                <span className='font-bold'>{ticket?.bookingQuantity}</span>
-                                {/* &nbsp; */}
-                                {/* <TbCoinTaka className='mb-2 ml-0.5 text-[16px] ' /> */}
+                        </h5>
+                        <h5 className="">
+                            <span className='flex items-baseline'>
+                                <span className='text-[12px]'>Seats Quantity : &nbsp;</span>
+                                <span className='flex items-center'>
+                                    <span className='font-bold'>{ticket?.bookingQuantity}</span>
+                                    {/* &nbsp; */}
+                                    {/* <TbCoinTaka className='mb-2 ml-0.5 text-[16px] ' /> */}
+                                </span>
                             </span>
-                        </span></h5>
+                        </h5>
                     </div>
                     <div className='w-full flex flex-col space-y-0.5'>
                         <hr />

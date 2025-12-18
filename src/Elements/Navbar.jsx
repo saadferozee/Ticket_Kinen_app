@@ -67,7 +67,7 @@ const Navbar = () => {
                         <a href='/' className="flex items-center gap-2 pl-0 text-[#D9C296]">
                             {/* <img width={45} height={35} src="/bus.png" alt="cat" /> */}
                             <span><HiTicket className='text-3xl rotate-325' /></span>
-                            <span className='title hidden md:block font-light text-2xl'>Ticket Kinen</span>
+                            <span className='title-logo hidden md:block font-light text-2xl'>Ticket Kinen</span>
                         </a>
                     </div>
                     <div className="navbar-center hidden lg:flex">

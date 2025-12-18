@@ -197,22 +197,26 @@ const VendorTicketCard = ({ ticket, fetchMyTickets }) => {
                         {ticket?.security && <h4 className='flex items-center gap-1 font-light text-[12px]'><GiPoliceOfficerHead className='text-[15px] text-yellow-600' /> VIP Security</h4>}
                     </div>
                     <div className='w-full text-lg flex justify-between'>
-                        <h5 className=""><span className='flex items-baseline'>
-                            <span className='text-[12px]'>Price : &nbsp;</span>
-                            <span className='flex items-center'>
-                                <span className='font-bold'>{ticket?.price}</span>
-                                {/* &nbsp; */}
-                                <TbCoinTaka className='mb-2 ml-0.5 text-[16px] ' />
+                        <h5 className="">
+                            <span className='flex items-baseline'>
+                                <span className='text-[12px]'>Price : &nbsp;</span>
+                                <span className='flex items-center'>
+                                    <span className='font-bold'>{ticket?.price}</span>
+                                    {/* &nbsp; */}
+                                    <TbCoinTaka className='mb-2 ml-0.5 text-[16px] ' />
+                                </span>
                             </span>
-                        </span></h5>
-                        <h5 className=""><span className='flex items-baseline'>
-                            <span className='text-[12px]'>Sits Available : &nbsp;</span>
-                            <span className='flex items-center'>
-                                <span className='font-bold'>{ticket?.availableSits}</span>
-                                {/* &nbsp; */}
-                                {/* <TbCoinTaka className='mb-2 ml-0.5 text-[16px] ' /> */}
+                        </h5>
+                        <h5 className="">
+                            <span className='flex items-baseline'>
+                                <span className='text-[12px]'>Sits Available : &nbsp;</span>
+                                <span className='flex items-center'>
+                                    <span className='font-bold'>{ticket?.availableSits}</span>
+                                    {/* &nbsp; */}
+                                    {/* <TbCoinTaka className='mb-2 ml-0.5 text-[16px] ' /> */}
+                                </span>
                             </span>
-                        </span></h5>
+                        </h5>
                     </div>
                     {/* <p>A card component has a figure, a body part, and inside body there are title and actions parts</p> */}
                     <div className="w-full flex gap-3">
