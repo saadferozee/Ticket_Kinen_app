@@ -23,8 +23,8 @@ const ManageTickets = () => {
         axiosSecure.patch(`/tickets/update/status?id=${id}&status=${status}`)
             .then(res => {
                 Swal.fire({
-                    title: "Changed!!",
-                    text: `User Role Changed Successfully.`,
+                    title: `${status === 'approved' ? 'Approved' : 'Rejected'}!!`,
+                    text: `Ticket Status Changed Successfully.`,
                     icon: "success"
                 });
                 res.data.modifiedCount && fetchTickets();

@@ -8,7 +8,7 @@ import { Link } from 'react-router';
 const TicketCard = ({ ticket }) => {
     return (
         <div className='flex flex-col justify-between'>
-            <div className="h-full flex flex-col justify-between rounded-3xl bg-[#0A2F23] text-[#D9C296] shadow-sm">
+            <div className="h-full flex flex-col justify-between border-2 border-[#D9C296c0] rounded-3xl bg-[#0A2F23] text-[#D9C296] shadow-sm">
                 <figure className="px-4 pt-4">
                     <img
                         src={ticket?.photoURL}
