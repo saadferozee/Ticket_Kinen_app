@@ -71,7 +71,7 @@ const AllTickets = () => {
                             <button
                                 key={page}
                                 onClick={() => setCurrentPage(page)}
-                                className={`join-item px-8 pt-1.25 pb-1.5 bg-[#0A2F23] text-[#D9C296] ${currentPage === page ? 'border-3 font-bold border-[#D9C296]' : 'border border-[#D9C296]'}`}
+                                className={`join-item px-8 pt-1.25 pb-1.5 border  text-[#D9C296] ${currentPage === page ? 'font-bold border-[#D9C296] bg-[#094f39]' : 'border-[#D9C296] bg-[#0A2F23]'}`}
                             >
                                 {page}
                             </button>
