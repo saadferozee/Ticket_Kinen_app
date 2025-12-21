@@ -12,6 +12,7 @@ import isTimeUp from '../Functions/IsTimeUp';
 import Swal from 'sweetalert2';
 import { useContext } from 'react';
 import AuthContext from '../Contexts/AuthContext';
+import ReactTooltip from '../Elements/ReactTooltip';
 
 const TicketDetails = () => {
 
@@ -209,14 +210,28 @@ const TicketDetails = () => {
                                     <div className='flex justify-center'>
                                         <h5>Time Left: &nbsp;</h5>
                                         <CountdownTimer targetDateTime={`${ticket.date}T${ticket.time}`} />
-                                    </div>
-                                    <button
-                                        onClick={() => handleBookNowButton()}
-                                        disabled={isTimeUp(ticket?.date, ticket?.time) || ticket?.availableSits < 1}
-                                        className='mt-4 px-8 pt-1.5 pb-1.75 border-2 border-[#D9C29690] rounded-full bg-[#0A2F23] hover:bg-[#0A2F2390] text-center text-[#D9C296] title cursor-pointer disabled:cursor-not-allowed'
-                                    >
-                                        Book Now
-                                    </button>
+                                    </div>{
+                                        isTimeUp(ticket?.date, ticket?.time) ? (
+                                            <button
+                                                onClick={() => handleBookNowButton()}
+                                                disabled={isTimeUp(ticket?.date, ticket?.time) || ticket?.availableSits < 1}
+                                                className='mt-4 px-8 pt-1.5 pb-1.75 border-2 border-[#D9C29690] rounded-full bg-[#0A2F23] hover:bg-[#0A2F2390] text-center text-[#D9C296] title cursor-pointer disabled:cursor-not-allowed'
+                                            >
+                                                <ReactTooltip id={'payment-button'} content={'Departure Time Passed'} place={'top'} >
+                                                    Book Now
+                                                </ReactTooltip>
+                                            </button>
+                                        ) : (
+                                            <button
+                                                onClick={() => handleBookNowButton()}
+                                                disabled={isTimeUp(ticket?.date, ticket?.time) || ticket?.availableSits < 1}
+                                                className='mt-4 px-8 pt-1.5 pb-1.75 border-2 border-[#D9C29690] rounded-full bg-[#0A2F23] hover:bg-[#0A2F2390] text-center text-[#D9C296] title cursor-pointer disabled:cursor-not-allowed'
+                                            >
+                                                Book Now
+                                            </button>
+
+                                        )
+                                    }
                                 </div>
                             </>
                         )

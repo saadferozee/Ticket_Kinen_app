@@ -4,7 +4,7 @@ import 'react-tooltip/dist/react-tooltip.css';
 
 const ReactTooltip = ({ id, content, place, children }) => {
     return (
-        <div className=''>
+        <div>
             <span data-tooltip-id={id} data-tooltip-content={content}>
                 {children}
             </span>

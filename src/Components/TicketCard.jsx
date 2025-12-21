@@ -4,6 +4,8 @@ import { GiHotMeal, GiPoliceOfficerHead } from 'react-icons/gi';
 import { IoFastFoodOutline } from 'react-icons/io5';
 import { TbBottle, TbCircleCheck, TbClockExclamation, TbCoinTaka, TbXboxX } from 'react-icons/tb';
 import { Link } from 'react-router';
+import isTimeUp from '../Functions/IsTimeUp';
+import ReactTooltip from '../Elements/ReactTooltip';
 
 const TicketCard = ({ ticket }) => {
     return (
@@ -66,7 +68,14 @@ const TicketCard = ({ ticket }) => {
                     </div>
                     {/* <p>A card component has a figure, a body part, and inside body there are title and actions parts</p> */}
                     <div className="w-full flex">
-                        <Link to={`/ticket/${ticket?._id}`} className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full font-light text-[#0A2F23] disabled:opacity-65 cursor-pointer">See Details</Link>
+                        <Link to={`/ticket/${ticket?._id}`} className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full font-light text-[#0A2F23] disabled:opacity-65 cursor-pointer">
+                            {
+                                isTimeUp(ticket?.date, ticket?.time) ? (
+                                    <ReactTooltip id={'ticket-details'} content={'Departure Time Passed'} place={'top-start'}>See Details</ReactTooltip>
+                                ) : 'See Details'
+                            }
+                            
+                        </Link>
                     </div>
                 </div>
             </div>

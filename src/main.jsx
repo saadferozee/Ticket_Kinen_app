@@ -8,11 +8,11 @@ import AuthProvider from './Providers/AuthProvider.jsx'
 import ThemeProvider from './Providers/ThemeProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <>
     <AuthProvider>
       <ThemeProvider>
         <RouterProvider router={router} />
       </ThemeProvider>
     </AuthProvider>
-  </StrictMode>,
+  </>,
 )

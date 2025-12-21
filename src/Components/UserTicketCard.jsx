@@ -7,6 +7,8 @@ import { BsCreditCard } from "react-icons/bs";
 import CountdownTimer from './CountdownTimer';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import isTimeUp from '../Functions/IsTimeUp';
+import ReactTooltip from '../Elements/ReactTooltip';
 
 const UserTicketCard = ({ ticket, myBookings, setMyBookings }) => {
 
@@ -24,6 +26,32 @@ const UserTicketCard = ({ ticket, myBookings, setMyBookings }) => {
                     });
                     setMyBookings(updateBookings);
                 }
+            })
+    }
+    const handlePayment = () => {
+        console.log(ticket);
+
+        const { userEmail, userName, vendorEmail, vendorName, ticketId, totalPrice, bookingQuantity, _id: bookingId, from, to, category } = ticket;
+        const productName = `${from} to ${to} ${category} Ticket`;
+        const ticketData = {
+            productName,
+            bookingId,
+            ticketId,
+            userEmail,
+            userName,
+            vendorEmail,
+            vendorName,
+            unitPrice: totalPrice / bookingQuantity,
+            bookingQuantity,
+            totalPrice,
+        }
+
+        axiosSecure.post('/checkout-payment', ticketData)
+            .then(res => {
+                window.location.href = res.data.url;
+            })
+            .catch(error => {
+                console.log(error);
             })
     }
 
@@ -100,7 +128,13 @@ const UserTicketCard = ({ ticket, myBookings, setMyBookings }) => {
                         {
                             ticket?.bookingStatus === 'approved' ? (
                                 ticket?.payment === 'pending' ? (
-                                    <button className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full font-normal text-[#0A2F23] disabled:opacity-85 disabled:cursor-not-allowed cursor-pointer">Pay Now</button>
+                                    isTimeUp(ticket?.date, ticket?.time) ? (
+                                        <ReactTooltip id={'payment-button'} content={'Departure Time Passed'} place={'top'} >
+                                            <button onClick={handlePayment} className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full font-normal text-[#0A2F23] disabled:opacity-85 disabled:cursor-not-allowed cursor-pointer">Pay Now</button>
+                                        </ReactTooltip>
+                                    ) : (
+                                        <button onClick={handlePayment} className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full font-normal text-[#0A2F23] disabled:opacity-85 disabled:cursor-not-allowed cursor-pointer">Pay Now</button>
+                                    )
                                 ) : ticket?.payment === 'paid' && (
                                     <button disabled className="w-full py-1 bg-[#F7F3E9] shadow-[#F7F3E9] border-transparent rounded-full disabled:cursor-not-allowed font-normal text-[#0A2F23] disabled:opacity-85 cursor-pointer">Already Paid</button>
                                 )
