@@ -124,7 +124,7 @@ const ManageTickets = () => {
                                                     </td>
                                                     <td className='w-[100px'><p className='flex gap-1'>{ticket.availableSits} <span>left</span></p></td>
                                                     <td>
-                                                        <p>{ticket?.price == 0 ? "Free" : `${ticket?.price}tk.`}</p>
+                                                        <p>{ticket?.price == 0 ? "Free" : `${ticket?.price} tk.`}</p>
                                                     </td>
                                                     <td><p>{ticket.time}</p></td>
                                                     <td><p>{ticket.date}</p></td>
