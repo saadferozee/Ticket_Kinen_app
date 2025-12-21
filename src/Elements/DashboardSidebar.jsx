@@ -14,7 +14,7 @@ import { FaFileInvoiceDollar } from 'react-icons/fa6';
 
 const DashboardSidebar = ({ children }) => {
 
-    const { role } = useContext(AuthContext);
+    const { role, logOut } = useContext(AuthContext);
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     return (
@@ -50,9 +50,9 @@ const DashboardSidebar = ({ children }) => {
                                 {/* List items */}
                                 <div className='space-y-3'>
                                     <li>
-                                        <NavLink to={'/dashboard/home'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
+                                        <NavLink to={'/'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
                                             <span><FaHome className='text-[23px]' /></span>
-                                            <span className="is-drawer-close:hidden">Homepage</span>
+                                            <span className="is-drawer-close:hidden">Home Page</span>
                                         </NavLink>
                                     </li>
                                     {
@@ -131,10 +131,10 @@ const DashboardSidebar = ({ children }) => {
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <Link to={'/'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
+                                        <button onClick={() => logOut()} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
                                             <span><MdOutlineExitToApp className='text-[24px] rotate-180' /></span>
-                                            <span className="is-drawer-close:hidden">Exit Dashboard</span>
-                                        </Link>
+                                            <span className="is-drawer-close:hidden">Log Out</span>
+                                        </button>
                                     </li>
                                 </div>
                             </ul>
