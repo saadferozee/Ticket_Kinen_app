@@ -3,7 +3,7 @@ import { useEffect, useContext } from "react"
 import AuthContext from "../Contexts/AuthContext"
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:3568'
+    baseURL: 'https://ticket-kinen-app.vercel.app'
 })
 
 const useAxiosSecure = () => {

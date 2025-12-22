@@ -35,8 +35,8 @@ const AddSection = () => {
                     <div className='border-2 border-[#D9C296c0] p-6 rounded-xl bg-[#0A2F23] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3'>
                         {
                             advertisedTickets.map(ticket => (
-                                <div className='text-[#D9C296]'>
-                                    <AdvertisedTicketCard ticket={ticket}></AdvertisedTicketCard>
+                                <div className='text-[#0A2F23]'>
+                                    <AdvertisedTicketCard key={ticket?._id} ticket={ticket}></AdvertisedTicketCard>
                                 </div>
                             ))
                         }

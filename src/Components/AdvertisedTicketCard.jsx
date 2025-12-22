@@ -10,10 +10,10 @@ import { Link } from 'react-router';
 const AdvertisedTicketCard = ({ ticket }) => {
     return (
         <div>
-            <div className='w-full box-border p-3.5 border-2 border-[#D9C296] rounded-lg'>
+            <div className='w-full box-border bg-[#D9C296] p-3.5 border-2 border-[#D9C296] rounded-lg'>
                 <div className='flex justify-between gap-2'>
                     <div className="avatar">
-                        <div className="mask mask-squircle h-20 w-20">
+                        <div className="mask mask-squircle h-20 w-20 p-">
                             <img
                                 src={ticket?.photoURL}
                                 className='object-cover'
@@ -89,13 +89,13 @@ const AdvertisedTicketCard = ({ ticket }) => {
                     </div>
                 </div>
                 <div className='w-full flex justify-end grow gap-3'>
-                    {ticket?.breakfast && <h4 className='flex items-center gap-1 font-light text-[12px]'><IoFastFoodOutline className='text-[15px] text-yellow-600' /> Breakfast</h4>}
-                    {ticket?.meal && <h4 className='flex items-center gap-1 font-light text-[12px]'><GiHotMeal className='text-[15px] text-yellow-600' /> Lunch</h4>}
-                    {ticket?.water && <h4 className='flex items-center gap-1 font-light text-[12px]'><TbBottle className='text-[15px] text-yellow-600' /> Water</h4>}
-                    {ticket?.security && <h4 className='flex items-center gap-1 font-light text-[12px]'><GiPoliceOfficerHead className='text-[15px] text-yellow-600' /> VIP Security</h4>}
+                    {ticket?.breakfast && <h4 className='flex items-center gap-1 font-light text-[12px]'><IoFastFoodOutline className='text-[15px] text-yellow-900' /> Breakfast</h4>}
+                    {ticket?.meal && <h4 className='flex items-center gap-1 font-light text-[12px]'><GiHotMeal className='text-[15px] text-yellow-900' /> Lunch</h4>}
+                    {ticket?.water && <h4 className='flex items-center gap-1 font-light text-[12px]'><TbBottle className='text-[15px] text-yellow-900' /> Water</h4>}
+                    {ticket?.security && <h4 className='flex items-center gap-1 font-light text-[12px]'><GiPoliceOfficerHead className='text-[15px] text-yellow-900' /> VIP Security</h4>}
                 </div>
                 <div className="w-full flex">
-                    <Link to={`/ticket/${ticket?._id}`} className="w-full mt-2 py-0.5 bg-[#0A2F23] shadow-[#F7F3E9] border border-[#D9C296c0] rounded-full font-light text-center text-sm text-[#D9C296] disabled:opacity-65 cursor-pointer">
+                    <Link to={`/ticket/${ticket?._id}`} className="w-full mt-2 py-0.5 bg-[#D9C296] shadow-[#F7F3E9] border border-[#0A2F23c0] rounded-full font-light text-center text-sm text-[#0A2F23] disabled:opacity-65 cursor-pointer">
                         {
                             isTimeUp(ticket?.date, ticket?.time) ? (
                                 <ReactTooltip id={'ticket-details'} content={'Departure Time Passed'} place={'top-start'}>See Details</ReactTooltip>
