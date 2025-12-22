@@ -48,7 +48,7 @@ const BannerSection = () => {
                                         “Book bus, train, launch & flight tickets easily”
                                     </span>
                                 </div>
-                                <img className="h-75 md:h-150 w-full border-3 border-[#0A2F23] p-2 object-cover rounded-lg" src="https://i.ibb.co.com/sdZfLJfQ/imgi-134-Untitled-design-2019-05-31-T200158-980.png" alt="" />
+                                <img className="h-75 md:h-120 w-full border-3 border-[#0A2F23] p-2 object-cover rounded-lg" src="https://i.ibb.co.com/sdZfLJfQ/imgi-134-Untitled-design-2019-05-31-T200158-980.png" alt="" />
                                 {/* Overlay text */}
                                 <div className="w-full h-full absolute inset-0 bg-[#0A2F2360]  flex items-center justify-center rounded-lg">
                                     <h3 className="text-white text-lg sm:text-2xl font-light text-center px-12 py-2 rounded">
@@ -68,7 +68,7 @@ const BannerSection = () => {
                                         “Book bus, train, launch & flight tickets easily”
                                     </span>
                                 </div>
-                                <img className="h-75 md:h-150 w-full border-3 border-[#0A2F23] p-2 object-cover rounded-lg" src="https://i.ibb.co.com/3yfM2cgG/imgi-145-demo-36.jpg" alt="" />
+                                <img className="h-75 md:h-120 w-full border-3 border-[#0A2F23] p-2 object-cover rounded-lg" src="https://i.ibb.co.com/3yfM2cgG/imgi-145-demo-36.jpg" alt="" />
                                 {/* Overlay text */}
                                 <div className="w-full h-full absolute inset-0 bg-[#0A2F2360]  flex items-center justify-center rounded-lg">
                                     <h3 className="text-white text-lg sm:text-2xl font-light text-center px-12 py-2 rounded">
@@ -88,7 +88,7 @@ const BannerSection = () => {
                                         “Book bus, train, launch & flight tickets easily”
                                     </span>
                                 </div>
-                                <img className="h-75 md:h-150 w-full border-3 border-[#0A2F23] p-2 object-cover rounded-lg" src="https://i.ibb.co.com/CDLvw8m/imgi-165-road-view-with-vehicles-passing-from-bus-window-during-ride-time-lapse-ejpmlljd-thumbnail-1.png" alt="" />
+                                <img className="h-75 md:h-120 w-full border-3 border-[#0A2F23] p-2 object-cover rounded-lg" src="https://i.ibb.co.com/CDLvw8m/imgi-165-road-view-with-vehicles-passing-from-bus-window-during-ride-time-lapse-ejpmlljd-thumbnail-1.png" alt="" />
                                 {/* Overlay text */}
                                 <div className="w-full h-full absolute inset-0 bg-[#0A2F2360]  flex items-center justify-center rounded-lg">
                                     <h3 className="text-white text-lg sm:text-2xl font-light text-center px-12 py-2 rounded">
@@ -108,7 +108,7 @@ const BannerSection = () => {
                                         “Book bus, train, launch & flight tickets easily”
                                     </span>
                                 </div>
-                                <img className="h-75 md:h-150 w-full border-3 border-[#0A2F23] p-2 object-cover rounded-lg" src="https://i.ibb.co.com/7tfMRLnj/imgi-189-3970992.jpg" alt="" />
+                                <img className="h-75 md:h-120 w-full border-3 border-[#0A2F23] p-2 object-cover rounded-lg" src="https://i.ibb.co.com/7tfMRLnj/imgi-189-3970992.jpg" alt="" />
                                 {/* Overlay text */}
                                 <div className="w-full h-full absolute inset-0 bg-[#0A2F2360]  flex items-center justify-center rounded-lg">
                                     <h3 className="text-white text-lg sm:text-2xl font-light text-center px-12 py-2 rounded">
@@ -128,7 +128,7 @@ const BannerSection = () => {
                                         “Book bus, train, launch & flight tickets easily”
                                     </span>
                                 </div>
-                                <img className="h-75 md:h-150 w-full border-3 border-[#0A2F23] p-2 object-cover rounded-lg" src="https://i.ibb.co.com/sdZfLJfQ/imgi-134-Untitled-design-2019-05-31-T200158-980.png" alt="" />
+                                <img className="h-75 md:h-120 w-full border-3 border-[#0A2F23] p-2 object-cover rounded-lg" src="https://i.ibb.co.com/sdZfLJfQ/imgi-134-Untitled-design-2019-05-31-T200158-980.png" alt="" />
                                 {/* Overlay text */}
                                 <div className="w-full h-full absolute inset-0 bg-[#0A2F2360]  flex items-center justify-center rounded-lg">
                                     <h3 className="text-white text-lg sm:text-2xl font-light text-center px-12 py-2 rounded">
@@ -148,7 +148,7 @@ const BannerSection = () => {
                                         “Book bus, train, launch & flight tickets easily”
                                     </span>
                                 </div>
-                                <img className="h-75 md:h-150 w-full border-3 border-[#0A2F23] p-2 object-cover rounded-lg" src="https://i.ibb.co.com/3yfM2cgG/imgi-145-demo-36.jpg" alt="" />
+                                <img className="h-75 md:h-120 w-full border-3 border-[#0A2F23] p-2 object-cover rounded-lg" src="https://i.ibb.co.com/3yfM2cgG/imgi-145-demo-36.jpg" alt="" />
                                 {/* Overlay text */}
                                 <div className="w-full h-full absolute inset-0 bg-[#0A2F2360]  flex items-center justify-center rounded-lg">
                                     <h3 className="text-white text-lg sm:text-2xl font-light text-center px-12 py-2 rounded">
@@ -168,7 +168,7 @@ const BannerSection = () => {
                                         “Book bus, train, launch & flight tickets easily”
                                     </span>
                                 </div>
-                                <img className="h-75 md:h-150 w-full border-3 border-[#0A2F23] p-2 object-cover rounded-lg" src="https://i.ibb.co.com/CDLvw8m/imgi-165-road-view-with-vehicles-passing-from-bus-window-during-ride-time-lapse-ejpmlljd-thumbnail-1.png" alt="" />
+                                <img className="h-75 md:h-120 w-full border-3 border-[#0A2F23] p-2 object-cover rounded-lg" src="https://i.ibb.co.com/CDLvw8m/imgi-165-road-view-with-vehicles-passing-from-bus-window-during-ride-time-lapse-ejpmlljd-thumbnail-1.png" alt="" />
                                 {/* Overlay text */}
                                 <div className="w-full h-full absolute inset-0 bg-[#0A2F2360]  flex items-center justify-center rounded-lg">
                                     <h3 className="text-white text-lg sm:text-2xl font-light text-center px-12 py-2 rounded">
@@ -188,7 +188,7 @@ const BannerSection = () => {
                                         “Book bus, train, launch & flight tickets easily”
                                     </span>
                                 </div>
-                                <img className="h-75 md:h-150 w-full border-3 border-[#0A2F23] p-2 object-cover rounded-lg" src="https://i.ibb.co.com/7tfMRLnj/imgi-189-3970992.jpg" alt="" />
+                                <img className="h-75 md:h-120 w-full border-3 border-[#0A2F23] p-2 object-cover rounded-lg" src="https://i.ibb.co.com/7tfMRLnj/imgi-189-3970992.jpg" alt="" />
                                 {/* Overlay text */}
                                 <div className="w-full h-full absolute inset-0 bg-[#0A2F2360]  flex items-center justify-center rounded-lg">
                                     <h3 className="text-white text-lg sm:text-2xl font-light text-center px-12 py-2 rounded">
