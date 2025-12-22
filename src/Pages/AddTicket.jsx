@@ -87,7 +87,7 @@ const AddTicket = () => {
                                     <input type="text" name='title' className="input px-6 w-full border border-[#D9C296] rounded-full" placeholder="Ticket Title" />
 
                                     <div className='flex gap-2'>
-                                        <select type="text" name='from' defaultValue='From' className="select px-6 w-full border border-[#D9C296] rounded-full">
+                                        <select type="text" name='from' defaultValue='From' className="select px-6 w-full border border-[#D9C296] rounded-full" >
                                             <option disabled={true}>From</option>
                                             {
                                                 districts.map((district, index) => <option key={index} value={district} >{district}</option>)
