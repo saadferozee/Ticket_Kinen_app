@@ -4,11 +4,15 @@ import AuthContext from '../Contexts/AuthContext';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const AddTicket = () => {
 
     const axiosSecure = useAxiosSecure();
     const { user, userStatus } = useContext(AuthContext);
+    const [districts, setDistricts] = useState([]);
+    // const [loading, setLoading] = useState(true);
 
     const handleAddTicket = async e => {
         e.preventDefault();
@@ -60,6 +64,11 @@ const AddTicket = () => {
         };
     };
 
+    useEffect(() => {
+        fetch('/district.json').then(res => res.json()).then(res => setDistricts(res.districts.map(district => district.name)));
+    }, [])
+    console.log(districts)
+
     return (
         <div>
             <title>Ticket Kinen | Add Product</title>
@@ -78,13 +87,24 @@ const AddTicket = () => {
                                     <input type="text" name='title' className="input px-6 w-full border border-[#D9C296] rounded-full" placeholder="Ticket Title" />
 
                                     <div className='flex gap-2'>
-                                        <input type="text" name='from' className="input px-6 w-full border border-[#D9C296] rounded-full" placeholder="From" />
-                                        <input type="text" name='to' className="input px-6 w-full border border-[#D9C296] rounded-full" placeholder="To" />
+                                        <select type="text" name='from' defaultValue='From' className="select px-6 w-full border border-[#D9C296] rounded-full">
+                                            <option disabled={true}>From</option>
+                                            {
+                                                districts.map((district, index) => <option key={index} value={district} >{district}</option>)
+                                            }
+                                        </select>
+                                        <select type="text" name='to' defaultValue='To' className="select px-6 w-full border border-[#D9C296] rounded-full">
+                                            <option disabled={true}>To</option>
+                                            {
+                                                districts.map((district, index) => <option key={index} value={district} >{district}</option>)
+                                            }
+                                        </select>
+                                        {/* <input type="text" name='to' className="input px-6 w-full border border-[#D9C296] rounded-full" placeholder="To" /> */}
                                     </div>
 
                                     <select
                                         name='category'
-                                        defaultValue="Transport Type"
+                                        defaultValue="Select Transport Type"
                                         className="select w-full border border-[#D9C296] px-6 rounded-full"
                                     >
                                         <option disabled={true}>Select Transport Type</option>
