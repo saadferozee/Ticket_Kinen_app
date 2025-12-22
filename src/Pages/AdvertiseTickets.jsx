@@ -41,7 +41,6 @@ const AdvertiseTickets = () => {
             .catch(err => console.log(err))
     }
 
-    console.log(ticketAdvertised);
     useEffect(() => {
         fetchApprovedTickets();
         // eslint-disable-next-line react-hooks/exhaustive-deps
