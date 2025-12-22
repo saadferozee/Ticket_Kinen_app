@@ -38,7 +38,7 @@ const scatterOffsets = [
 // the component and left unclosed, which caused parsing errors.
 
 /* -------------- COMPONENT -------------- */
-const PopularRoutes = () => {
+const TravelPartnerSection = () => {
     const [active, setActive] = useState(0);
 
     return (
@@ -141,5 +141,5 @@ const Card = ({ agency, active }) => (
     </div>
 );
 
-export default PopularRoutes;
+export default TravelPartnerSection;
 
