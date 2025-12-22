@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
-/* ---------------- DATA ---------------- */
 const agencies = [
     { id: 1, name: 'GoZayaan', desc: 'দেশীয় ভ্রমণের জন্য জনপ্রিয় ডিজিটাল ট্রাভেল প্ল্যাটফর্ম।' },
     { id: 2, name: 'ShareTrip Domestic', desc: 'বাংলাদেশের অভ্যন্তরীণ ভ্রমণে স্মার্ট সমাধান।' },
@@ -13,7 +12,6 @@ const agencies = [
     { id: 8, name: 'Desh Travels', desc: 'শুধু দেশেই, দেশকে নিয়েই ভ্রমণ।' },
 ];
 
-/* -------- SCATTER MAP (DESKTOP) -------- */
 const scatter = [
     { x: -480, y: -40, r: -7 },
     { x: -330, y: 70, r: 6 },
@@ -37,14 +35,13 @@ const scatterOffsets = [
 // Removed an accidental incomplete JSX <motion.div> block that was placed outside
 // the component and left unclosed, which caused parsing errors.
 
-/* -------------- COMPONENT -------------- */
 const TravelPartnerSection = () => {
     const [active, setActive] = useState(0);
 
     return (
-        <section className="my-12 max-w-300 mx-auto min-h-10 px-6 md:px-0">
+        <section className="mt-40 max-w-300 mx-auto min-h-10 px-6 md:px-0">
             {/* DESKTOP / TABLET */}
-            <h1 className="mb-0.5 ml-2 lg:ml-0 flex items-center gap-3 text-2xl lg:text-4xl font-semibold text-[#0A2F23]">
+            <h1 className="mt-18 -mb-3 ml-2 lg:ml-0 flex items-center gap-3 text-2xl lg:text-4xl font-semibold text-[#0A2F23]">
                 <span className="w-2 h-8 bg-[#0A2F23] rounded-full"></span>
                 <span className="px-8 py-0 bg-[#D9C296e5] border-4 border-[#0A2F23] rounded-full shadow flex flex-col">
                     <span className='text-xl'>Meet Your New Travel Partner</span>
@@ -112,7 +109,6 @@ const TravelPartnerSection = () => {
     );
 };
 
-/* --------------- CARD UI --------------- */
 const Card = ({ agency, active }) => (
     <div className="p-6 h-full flex flex-col justify-between text-[#D9C296]">
         <div>
