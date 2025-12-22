@@ -36,7 +36,6 @@ const LatestTicketSection = () => {
                         )
                 }
             </div>
-            This is latest tickets.
         </div>
     );
 };
