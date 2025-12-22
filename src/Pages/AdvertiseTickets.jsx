@@ -18,7 +18,7 @@ const AdvertiseTickets = () => {
     const [ticketAdvertised, setTicketAdvertised] = useState([]);
 
     const fetchApprovedTickets = () => {
-        axiosInstance.get('/tickets/approved-tickets')
+        axiosInstance.get('/tickets/all-approved-tickets')
             .then(response => {
                 setApprovedTickets(response.data);
                 setLoading(false);
@@ -41,6 +41,7 @@ const AdvertiseTickets = () => {
             .catch(err => console.log(err))
     }
 
+    console.log(ticketAdvertised);
     useEffect(() => {
         fetchApprovedTickets();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -111,7 +112,7 @@ const AdvertiseTickets = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* row 1 */}
+                                    {/* row */}
                                     {
                                         approvedTickets.map(ticket =>
                                             ticket?.availableSits > 1 && (
@@ -171,7 +172,7 @@ const AdvertiseTickets = () => {
                                                             ticket?.onAdd ? (
                                                                 <button type='button' onClick={() => handleAdvertise(ticket?._id, false)} className="w-full px-4 pt-1.5 pb-1.75 rounded-full bg-[#F7F3E9] font-light text-[#ff0000] cursor-pointer">Hide</button>
                                                             ) : (
-                                                                <button type='button' onClick={() => handleAdvertise(ticket?._id, true)} disabled={ticketAdvertised > 5} title={ticketAdvertised > 5 && 'Up to 6 ticket can advertise'} className="w-full px-4 pt-1.5 pb-1.75 rounded-full bg-[#F7F3E9] font-light text-green-700 cursor-pointer">Advertise</button>
+                                                                <button type='button' onClick={() => handleAdvertise(ticket?._id, true)} disabled={ticketAdvertised.length > 5} title={ticketAdvertised > 5 ? 'Up to 6 ticket can advertise' : ''} className="w-full px-4 pt-1.5 pb-1.75 rounded-full bg-[#F7F3E9] font-light text-green-700 cursor-pointer disabled:cursor-not-allowed">Advertise</button>
                                                             )
                                                         }
                                                     </th>
