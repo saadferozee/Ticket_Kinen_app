@@ -63,7 +63,7 @@ const TravelPartnerSection = () => {
             <h1 className="mt-18 mb-3 lg:-mb-3 ml-2 lg:ml-0 flex items-center gap-3 text-2xl lg:text-4xl font-semibold text-[#0A2F23]">
                 <span className="w-2 h-8 bg-[#0A2F23] rounded-full"></span>
                 <span className="px-8 py-0 bg-[#D9C296e5] border-4 border-[#0A2F23] rounded-full shadow flex flex-col">
-                    <span className='text-xl'>Meet Your New Travel Partner</span>
+                    <span className='text-xl'>Some Tips from Your Travel Partner</span>
                 </span>
             </h1>
             {/* DESKTOP / TABLET */}
