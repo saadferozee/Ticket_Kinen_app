@@ -2,14 +2,46 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const agencies = [
-    { id: 1, name: 'GoZayaan', desc: 'দেশীয় ভ্রমণের জন্য জনপ্রিয় ডিজিটাল ট্রাভেল প্ল্যাটফর্ম।' },
-    { id: 2, name: 'ShareTrip Domestic', desc: 'বাংলাদেশের অভ্যন্তরীণ ভ্রমণে স্মার্ট সমাধান।' },
-    { id: 3, name: 'Travel Mate BD', desc: 'দেশীয় গ্রুপ ও কাস্টমাইজড ট্যুরে অভিজ্ঞ।' },
-    { id: 4, name: 'Obokash', desc: 'বাংলাদেশের ট্যুরিস্ট স্পট ভিত্তিক সার্ভিস।' },
-    { id: 5, name: 'Vromon Bilash', desc: 'পরিকল্পিত ও আরামদায়ক দেশীয় ভ্রমণ।' },
-    { id: 6, name: 'Trip Zip BD', desc: 'লোকাল ও বাজেট ট্রাভেলে পরিচিত নাম।' },
-    { id: 7, name: 'Ghure Ashi', desc: 'বাংলাদেশ ঘোরার নির্ভরযোগ্য পার্টনার।' },
-    { id: 8, name: 'Desh Travels', desc: 'শুধু দেশেই, দেশকে নিয়েই ভ্রমণ।' },
+    {
+        id: 1,
+        name: 'বাজেট ট্রাভেলের বুদ্ধিমান সমাধান',
+        tip: 'লোকাল ট্রান্সপোর্ট ব্যবহার করলে খরচ কমে এবং আসল ভ্রমণের স্বাদ পাওয়া যায়।'
+    },
+    {
+        id: 2,
+        name: 'স্মার্ট ট্রাভেলারদের প্রথম পছন্দ',
+        tip: 'ভ্রমণের আগে ফ্লাইট ও হোটেল একসাথে বুক করলে খরচ কমে এবং সময় বাঁচে।'
+    },
+    {
+        id: 3,
+        name: 'দেশের ভেতরে ঝামেলাহীন ট্রিপ',
+        tip: 'অফ-পিক সিজনে ভ্রমণ করলে একই জায়গায় কম ভিড় ও ভালো ডিল পাওয়া যায়।'
+    },
+    {
+        id: 4,
+        name: 'গ্রুপ ট্রিপ মানেই নিশ্চিন্ত',
+        tip: 'গ্রুপ ট্যুরে যাওয়ার আগে ভ্রমণসূচি ভালো করে পড়ে নিলে অপ্রয়োজনীয় ঝামেলা এড়ানো যায়।'
+    },
+    {
+        id: 5,
+        name: 'ঘোরার প্ল্যান, একদম নিজের মতো',
+        tip: 'নতুন জায়গায় গেলে লোকাল গাইড বা স্থানীয়দের পরামর্শ নিলে লুকানো স্পট খুঁজে পাওয়া যায়।'
+    },
+    {
+        id: 6,
+        name: 'আরামদায়ক ভ্রমণের ঠিকানা',
+        tip: 'ভ্রমণের সময় হালকা লাগেজ রাখলে চলাফেরা সহজ হয় এবং ট্রিপ বেশি উপভোগ্য হয়।'
+    },
+    {
+        id: 7,
+        name: 'দেশ ঘোরার গল্প শুরু এখান থেকেই',
+        tip: 'প্রতিটি ট্রিপে জরুরি কাগজপত্র ও ফার্স্ট এইড সঙ্গে রাখার অভ্যাস গড়ে তুলুন।'
+    },
+    {
+        id: 8,
+        name: 'দেশটাকেই নতুন করে চিনুন',
+        tip: 'ভ্রমণের সময় পরিবেশ পরিষ্কার রাখা ও স্থানীয় সংস্কৃতির প্রতি সম্মান দেখানো একজন ভালো ট্রাভেলারের পরিচয়।'
+    }
 ];
 
 const scatter = [
@@ -22,32 +54,20 @@ const scatter = [
     { x: 150, y: -110, r: -8 },
     { x: -40, y: 140, r: 4 },
 ];
-const scatterOffsets = [
-    { x: -480, y: -40 },
-    { x: -320, y: 60 },
-    { x: -160, y: -90 },
-    { x: 60, y: 80 },
-    { x: 260, y: -20 },
-    { x: 430, y: 50 },
-    { x: 150, y: -110 },
-];
-
-// Removed an accidental incomplete JSX <motion.div> block that was placed outside
-// the component and left unclosed, which caused parsing errors.
 
 const TravelPartnerSection = () => {
     const [active, setActive] = useState(0);
 
     return (
-        <section className="mt-40 max-w-300 mx-auto min-h-10 px-6 md:px-0">
-            {/* DESKTOP / TABLET */}
-            <h1 className="mt-18 -mb-3 ml-2 lg:ml-0 flex items-center gap-3 text-2xl lg:text-4xl font-semibold text-[#0A2F23]">
+        <section className="mt-40 max-w-300 mx-auto px-6 md:px-0">
+            <h1 className="mt-18 mb-3 lg:-mb-3 ml-2 lg:ml-0 flex items-center gap-3 text-2xl lg:text-4xl font-semibold text-[#0A2F23]">
                 <span className="w-2 h-8 bg-[#0A2F23] rounded-full"></span>
                 <span className="px-8 py-0 bg-[#D9C296e5] border-4 border-[#0A2F23] rounded-full shadow flex flex-col">
                     <span className='text-xl'>Meet Your New Travel Partner</span>
                 </span>
             </h1>
-            <div className="relative w-full h-150 flex items-center justify-center">
+            {/* DESKTOP / TABLET */}
+            <div className="relative hidden lg:flex w-full h-150 items-center justify-center">
                 {agencies.map((agency, index) => {
                     const isActive = index === active;
                     const pos = scatter[index % scatter.length];
@@ -85,7 +105,7 @@ const TravelPartnerSection = () => {
             </div>
 
             {/* MOBILE (FUN STACK) */}
-            <div className="md:hidden px-4 space-y-6">
+            <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4">
                 {agencies.map((agency, index) => (
                     <motion.div
                         key={agency.id}
@@ -113,29 +133,18 @@ const Card = ({ agency, active }) => (
     <div className="p-6 h-full flex flex-col justify-between text-[#D9C296]">
         <div>
             <span className="text-xs uppercase tracking-wide">
-                Domestic Only
+                Travel Tip
             </span>
 
-            <h3 className="text-2xl font-bold mt-2">
+            <h3 className="text-xl font-bold mt-2">
                 {agency.name}
             </h3>
 
             <p className="text-sm text-[#D9C296] mt-3 leading-relaxed">
-                {agency.desc}
+                {agency.tip}
             </p>
         </div>
-
-        {active && (
-            <motion.p
-                className="text-xs text-[#D9C296] mt-4"
-                animate={{ opacity: [0.4, 1, 0.4] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-            >
-                ★ Selected Partner
-            </motion.p>
-        )}
     </div>
 );
 
 export default TravelPartnerSection;
-

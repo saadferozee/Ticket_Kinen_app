@@ -41,17 +41,17 @@ const AboutSection = () => {
                         latest updates directly in your inbox.
                     </p>
 
-                    <form className="flex flex-col sm:flex-row gap-4">
+                    <form className="flex flex-col md:flex-row grow gap-4 text-sm">
                         <input
                             type="email"
                             placeholder="Enter your email address"
-                            className="flex-1 px-4 py-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="flex-1 px-4 py-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#edc478] font-light"
                             required
                         />
 
                         <button
                             type="submit"
-                            className="px-7 py-1 bg-transparent border border-[#edc478] rounded-lg font-medium hover:bg-blue-700 transition"
+                            className="px-2 py-1 bg-transparent border border-[#edc478] rounded-lg font-light hover:bg-[#D9C29680] transition"
                         >
                             Subscribe
                         </button>
