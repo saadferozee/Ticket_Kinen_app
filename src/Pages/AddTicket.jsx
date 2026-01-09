@@ -67,7 +67,6 @@ const AddTicket = () => {
     useEffect(() => {
         fetch('/district.json').then(res => res.json()).then(res => setDistricts(res.districts.map(district => district.name)));
     }, [])
-    console.log(districts)
 
     return (
         <div>

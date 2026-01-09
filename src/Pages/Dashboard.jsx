@@ -13,7 +13,7 @@ const Dashboard = () => {
         if (role === 'admin') {
             navigate('/dashboard/manage-tickets')
         } else if (role === 'vendor') {
-            navigate('/dashboard/requested-bookings')
+            navigate('/dashboard/revenue-overview')
         } else {
             navigate('/dashboard/my-booked-tickets')
         }

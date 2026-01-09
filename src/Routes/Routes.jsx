@@ -20,16 +20,22 @@ import MyBookedTickets from "../Pages/MyBookedTickets";
 import TransactionHistory from "../Pages/TransactionHistory";
 import TicketDetails from "../Pages/TicketDetails";
 import PaymentSuccess from "../Pages/PaymentSuccess";
+import PaymentCancelled from "../Pages/PaymentCancelled";
+import Error404 from "../Pages/Error/Error404";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <HomeLayout />,
         children: [
+            // General Routes
             { index: true, element: <Home /> },
             { path: '/all-tickets', element: <PrivateRoute authorization={'all-user'}><AllTickets></AllTickets></PrivateRoute> },
             { path: '/ticket/:id', element: <PrivateRoute authorization={'all-user'}><TicketDetails></TicketDetails></PrivateRoute> },
+            // Routes After Payment
             { path: '/payment-success', element: <PrivateRoute authorization={'all-user'}><PaymentSuccess></PaymentSuccess></PrivateRoute> },
+            { path: '/payment-cancelled', element: <PrivateRoute authorization={'all-user'}><PaymentCancelled></PaymentCancelled></PrivateRoute> },
+            // Authentication Routes
             { path: '/login', element: <Login /> },
             { path: '/forget-pass/:email', element: <ForgetPass /> },
             { path: '/register', element: <Register /> }
@@ -39,6 +45,7 @@ const router = createBrowserRouter([
         path: '/dashboard',
         element: <PrivateRoute authorization={'all-user'}><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
+            // Dashboard general Routes
             { index: true, element: <Dashboard /> },
             { path: 'home', element: <Dashboard /> },
             { path: 'my-profile', element: <MyProfile /> },
@@ -53,9 +60,11 @@ const router = createBrowserRouter([
             { path: 'revenue-overview', element: <PrivateRoute authorization={'vendor'}><RevenueOverview /></PrivateRoute> },
             // User Routes
             { path: 'my-booked-tickets', element: <PrivateRoute authorization={'user'}><MyBookedTickets /></PrivateRoute> },
-            { path: 'transaction-history', element: <PrivateRoute authorization={'user'}><TransactionHistory /></PrivateRoute> }
+            { path: 'transaction-history', element: <PrivateRoute authorization={'user'}><TransactionHistory /></PrivateRoute> },
+            { path: '*', Component: Error404 }
         ]
-    }
+    },
+    { path: '*', Component: Error404 }
 ])
 
 export default router;

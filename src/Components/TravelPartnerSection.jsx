@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 
 const agencies = [
@@ -130,7 +131,7 @@ const TravelPartnerSection = () => {
 };
 
 const Card = ({ agency, active }) => (
-    <div className="p-6 h-full flex flex-col justify-between text-[#D9C296]">
+    <div className={`p-6 h-full flex flex-col justify-between ${active ? 'text-[#f5d497]' : 'text-[#D9C296]'} `}>
         <div>
             <span className="text-xs uppercase tracking-wide">
                 Travel Tip

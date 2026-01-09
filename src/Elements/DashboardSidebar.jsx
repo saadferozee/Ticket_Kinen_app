@@ -80,6 +80,12 @@ const DashboardSidebar = ({ children }) => {
                                         ) : role === 'vendor' ? (
                                             <>
                                                 <li>
+                                                    <NavLink to={'/dashboard/revenue-overview'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
+                                                        <span><FaFileInvoiceDollar className='text-[23px]' /></span>
+                                                        <span className="is-drawer-close:hidden">Revenue Overview</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
                                                     <NavLink to={'/dashboard/add-ticket'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
                                                         <span><LuTicketPlus className='text-[23px] rotate-340' /></span>
                                                         <span className="is-drawer-close:hidden">Add Ticket</span>
@@ -95,12 +101,6 @@ const DashboardSidebar = ({ children }) => {
                                                     <NavLink to={'/dashboard/requested-bookings'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
                                                         <span><LuCalendarSearch className='text-[23px]' /></span>
                                                         <span className="is-drawer-close:hidden">Requested Bookings</span>
-                                                    </NavLink>
-                                                </li>
-                                                <li>
-                                                    <NavLink to={'/dashboard/revenue-overview'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right border border-transparent">
-                                                        <span><FaFileInvoiceDollar className='text-[23px]' /></span>
-                                                        <span className="is-drawer-close:hidden">Revenue Overview</span>
                                                     </NavLink>
                                                 </li>
                                             </>
