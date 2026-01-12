@@ -148,7 +148,7 @@ const TicketDetails = () => {
             <div className=' min-h-[70vh] flex flex-col items-center'>
                 <div className='mx-[3%] lg:min-w-175 my-8 lg:my-auto p-[2%] border-2 border-[#D9C29695] rounded-4xl bg-[#0A2F23] text-[#D9C296] flex flex-col lg:flex-row gap-10'>
                     {
-                        loading ? <Loading viewHeight={40} color={'#556B2F'}></Loading> : (
+                        loading ? <Loading viewHeight={40} color={'#0A2F23'}></Loading> : (
                             <>
                                 <div className='w-full lg:w-[45%]'>
                                     <img className='rounded-2xl w-full h-full object-cover' src={ticket?.photoURL} alt="" />
@@ -167,7 +167,7 @@ const TicketDetails = () => {
                                             )
                                         }
                                     </h3>
-                                    <h1 className='my-1 text-4xl text-[#F7F3E9] text-shadow-lg text-shadow-[#556B2F]'>{ticket?.title}</h1>
+                                    <h1 className='my-1 text-4xl text-[#F7F3E9] text-shadow-lg text-shadow-[#0A2F23]'>{ticket?.title}</h1>
                                     <div className='w-full text-left'>
                                         <h3 className="card-title font-bold text-2xl flex items-baseline"><span className='text-xs font-light'>From</span> <span>{ticket?.from}</span> <span className='text-xs font-light'>to</span> <span>{ticket?.to}</span></h3>
                                         <h3 className="card-title font-semibold text-xl flex items-baseline"><span className='text-xs font-light'>Time :</span> <span>{ticket?.time}</span> <span className='text-xs font-light'>Date :</span> <span>{ticket?.date}</span></h3>

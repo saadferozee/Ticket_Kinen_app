@@ -21,8 +21,8 @@ const ForgetPass = ({ params }) => {
     }
 
     return (
-        <div className='w-full py-[250px]'>
-            <div className='max-w-[500px] mx-auto'>
+        <div className='w-full py-62.5'>
+            <div className='max-w-125 mx-auto'>
                 <form onSubmit={handleResetPass} className='w-full'>
                     <fieldset className="fieldset w-full bg-[#0A2F23] border-2 border-[#d9c296f0] shadow-2xl shadow-[#00000070] rounded-3xl p-6 sm:p-10">
                         <h3 className='pl-2 text-2xl text-[#D9C296]'>Forget Password</h3>

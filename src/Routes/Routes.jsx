@@ -22,6 +22,9 @@ import TicketDetails from "../Pages/TicketDetails";
 import PaymentSuccess from "../Pages/PaymentSuccess";
 import PaymentCancelled from "../Pages/PaymentCancelled";
 import Error404 from "../Pages/Error/Error404";
+import About from "../Pages/About";
+import Terms from "../Pages/Terms";
+import PrivacyPolicy from "../Pages/PrivacyPolicy";
 
 const router = createBrowserRouter([
     {
@@ -30,7 +33,10 @@ const router = createBrowserRouter([
         children: [
             // General Routes
             { index: true, element: <Home /> },
-            { path: '/all-tickets', element: <PrivateRoute authorization={'all-user'}><AllTickets></AllTickets></PrivateRoute> },
+            { path: '/all-tickets', element:<AllTickets></AllTickets> },
+            { path: '/about', element:<About></About> },
+            { path: '/terms-and-conditions', element:<Terms></Terms> },
+            { path: '/privacy-policy', element:<PrivacyPolicy></PrivacyPolicy> },
             { path: '/ticket/:id', element: <PrivateRoute authorization={'all-user'}><TicketDetails></TicketDetails></PrivateRoute> },
             // Routes After Payment
             { path: '/payment-success', element: <PrivateRoute authorization={'all-user'}><PaymentSuccess></PaymentSuccess></PrivateRoute> },

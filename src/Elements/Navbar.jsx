@@ -38,6 +38,14 @@ const Navbar = () => {
     const links = <div className={`flex ${user ? 'gap-1' : 'gap-3'} font-stretch-125% text-[#D9C296] text-md`}>
         <NavLink className='px-3 pt-1.5 pb-1.75 rounded-full border border-transparent' to={'/'}>Home</NavLink>
         <NavLink className='px-3 pt-1.5 pb-1.75 rounded-full border border-transparent' to={'/all-tickets'}>All Tickets</NavLink>
+        <NavLink className='px-3 pt-1.5 pb-1.75 rounded-full border border-transparent' to={'/about'}>About Us</NavLink>
+        <div className='dropdown flex items-center cursor-pointer'>
+            <a tabIndex={0} role='button' className='px-3 pt-0.5 pb-0.75 rounded-full border border-transparent hover:border-[#F7F3E9] transition-all duration-300 cursor-pointer'>Policies</a>
+            <ul tabIndex={-1} className="menu dropdown-content top-10 bg-[#0A2F2340] rounded z-1 mt-3 w-fit p-2 shadow space-y-1.5">
+                <NavLink to="/privacy-policy" className="px-4 pt-0.5 pb-0.75 rounded-full bg-[#F7F3E9] text-[#0A2F23] cursor-pointer hover:bg-gray-100 transition-colors">Privacy</NavLink>
+                <NavLink to="/terms-and-conditions" className="px-4 pt-0.5 pb-0.75 rounded-full bg-[#F7F3E9] text-[#0A2F23] cursor-pointer hover:bg-gray-100 transition-colors">Terms</NavLink>
+            </ul>
+        </div>
     </div>
     const linksDrop = <>
         <NavLink className='px-3 pt-1.5 pb-1.75 rounded-full border border-transparent' to={'/'}>Home</NavLink>

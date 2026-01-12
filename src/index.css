@@ -43,7 +43,7 @@
     margin-top: 8px !important;
     /* mt-2 */
     background-color: #F7F3E9 !important;
-    color: #556B2F !important;
+    color: #0A2F23 !important;
     border-radius: 9999px !important;
     /* rounded-full */
     padding: 10px 20px !important;
@@ -63,7 +63,7 @@
     /* lg:w-[18%] */
     margin-top: 8px !important;
     background-color: #F7F3E999 !important;
-    color: #556B2F !important;
+    color: #0A2F23 !important;
     border-radius: 9999px !important;
     padding: 10px 20px !important;
     border: none !important;
@@ -95,7 +95,7 @@
 
 .custom-cancel-btn-update {
     background-color: #F7F3E999 !important;
-    color: #556B2F !important;
+    color: #0A2F23 !important;
     border-radius: 9999px !important;
     padding: 10px 24px !important;
     font-weight: 600 !important;

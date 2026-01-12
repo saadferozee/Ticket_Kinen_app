@@ -85,7 +85,7 @@ const BannerSection = () => {
                                                 “Book bus, train, launch & flight tickets easily”
                                             </span>
                                         </div>
-                                        <img className="h-75 md:h-120 w-full border-3 border-[#0a2f23] dark:border-[#edc478] p-2 object-cover rounded-lg" src={data.photoUrl} alt="" />
+                                        <img className="max-h-75 md:max-h-120 w-full border-3 border-[#0a2f23] dark:border-[#edc478] p-2 object-cover rounded-lg" src={data.photoUrl} alt="" />
                                         {/* Overlay text */}
                                         <div className="w-full h-full absolute inset-0 bg-[#0A2F2360]  flex items-center justify-center rounded-lg">
                                             <h3 className="text-white text-lg sm:text-2xl font-light text-center px-12 py-2 rounded">

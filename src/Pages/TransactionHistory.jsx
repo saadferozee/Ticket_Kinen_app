@@ -25,7 +25,7 @@ const TransactionHistory = () => {
         <div className='max-w-300 min-h-[65vh] mx-auto pt-12.5'>
             <h1 className="mb-3 ml-2 lg:ml-0 flex items-center gap-3 text-2xl lg:text-4xl font-semibold text-[#0A2F23]">
                 <span className="w-3 h-10 bg-[#0A2F23] rounded-full"></span>
-                <span className="px-8 py-2 bg-[#f7f3e9e5] border-4 border-[#556B2F] rounded-full shadow flex flex-col">
+                <span className="px-8 py-2 bg-[#f7f3e9e5] border-4 border-[#0A2F23] rounded-full shadow flex flex-col">
                     <span className='text-xl'>All Transactions</span>
                 </span>
             </h1>
